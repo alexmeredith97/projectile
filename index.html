@@ -11,7 +11,7 @@
   <div class="wrapper">
 
     <div id="projectiledisplay">
-        <canvas class="visualiser" width="800" height="600"></canvas> 
+        <canvas class="visualiser" width="800" height="700"></canvas> 
     </div>
 
     <div id="projectilesettings">
@@ -37,11 +37,31 @@
                 <input type="range" id="bounce" min="0" value="0.50" max="1" step="0.01">
 		</input>
 		<div class="compare">
-			<label for="bounce">Bounce collision efficiency</label><br>
-			<input type="range" id="bounce" min="0" value="0.50" max="1" step="0.01">
-			</input>
+			<label for="bounceMax">Maximum number of bounces</label><br/>
+                	<select id="bounceMax" name="bounceMax">
+                    	<option value="0">0</option>
+                    	<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					
+                	</select>
 
-			<br/><br/>
+                <br/><br/>
+
+                <label for="bounce">Bounce collision efficiency</label><br>
+                <input type="range" id="bounce" min="0" value="0.50" max="1" step="0.01">
+		</input>
+		
+		<br/><br/>
+		
+		<button type="button" onclick="alert('Trajectory Plotted')">Plot Trajectory!</button>
+				
+				<br/><br/>
 		</div>
 
                 <br/><br/>
