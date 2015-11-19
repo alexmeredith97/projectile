@@ -36,7 +36,7 @@ function Graph(config) {
         context.moveTo(0, this.centerY);
         context.lineTo(this.canvas.width, this.centerY);
         context.strokeStyle = this.axisColor;
-        context.lineWidth = 2;
+        context.lineWidth = 1;
         context.stroke();
 
         // draw tick marks
@@ -53,7 +53,7 @@ function Graph(config) {
           context.moveTo(xPos, this.centerY - this.tickSize / 2);
           context.lineTo(xPos, this.centerY + this.tickSize / 2);
           context.stroke();
-          context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3);
+          context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 30);
           unit -= this.unitsPerTick;
           xPos = Math.round(xPos - xPosIncrement);
         }
@@ -65,7 +65,7 @@ function Graph(config) {
           context.moveTo(xPos, this.centerY - this.tickSize / 2);
           context.lineTo(xPos, this.centerY + this.tickSize / 2);
           context.stroke();
-          context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3);
+          context.fillText(unit, xPos, this.centerY + this.tickSize / 2 - 30);
           unit += this.unitsPerTick;
           xPos = Math.round(xPos + xPosIncrement);
         }
@@ -79,7 +79,7 @@ function Graph(config) {
         context.moveTo(this.centerX, 0);
         context.lineTo(this.centerX, this.canvas.height);
         context.strokeStyle = this.axisColor;
-        context.lineWidth = 2;
+        context.lineWidth = 1;
         context.stroke();
 
         // draw tick marks
@@ -96,7 +96,7 @@ function Graph(config) {
           context.moveTo(this.centerX - this.tickSize / 2, yPos);
           context.lineTo(this.centerX + this.tickSize / 2, yPos);
           context.stroke();
-          context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+          context.fillText(unit, this.centerX - this.tickSize / 2 + 30, yPos);
           unit += this.unitsPerTick;
           yPos = Math.round(yPos - yPosIncrement);
         }
@@ -108,7 +108,7 @@ function Graph(config) {
           context.moveTo(this.centerX - this.tickSize / 2, yPos);
           context.lineTo(this.centerX + this.tickSize / 2, yPos);
           context.stroke();
-          context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+          context.fillText(unit, this.centerX - this.tickSize / 2 + 30, yPos);
           unit -= this.unitsPerTick;
           yPos = Math.round(yPos + yPosIncrement);
         }
@@ -151,15 +151,15 @@ function Graph(config) {
       };
       var myGraph = new Graph({
         canvasId: 'myCanvas',
-        minX: -10,
-        minY: -10,
-        maxX: 10,
-        maxY: 10,
+        minX: -0,
+        minY: -20,
+        maxX: 20,
+        maxY: 0,
         unitsPerTick: 1
       });
 
       myGraph.drawEquation(function(x) {
-        return 5 * Math.sin(x);
+          return (5 * Math.sin(x));
       }, 'green', 3);
 
       myGraph.drawEquation(function(x) {
