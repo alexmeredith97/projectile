@@ -162,7 +162,7 @@ function Graph(config) {
         var g = 9.8;
         
       myGraph.drawEquation(function(x) {
-          return (x * Math.tan(a) − (g*x*x/(2*u*u*Math.cos(a)*Math.cos(a))))
+          return ((x * Math.tan(a)) − ((g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a))))
 );
       }, 'green', 3);
 
