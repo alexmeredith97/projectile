@@ -159,7 +159,8 @@ function Graph(config) {
       });
 
       myGraph.drawEquation(function(x) {
-          return (5 * Math.sin(x));
+          return (x * Math.tan(a) − (gx*x/(2*u*u*cos(a)*cos(a))))
+);
       }, 'green', 3);
 
       myGraph.drawEquation(function(x) {
