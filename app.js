@@ -157,9 +157,12 @@ function Graph(config) {
         maxY: 0,
         unitsPerTick: 1
       });
-
+        var a = 1
+        var u = 10
+        var g = 9.8
+        
       myGraph.drawEquation(function(x) {
-          return (x * Math.tan(a) − (gx*x/(2*u*u*cos(a)*cos(a))))
+          return (x * Math.tan(a) − (g*x*x/(2*u*u*Math.cos(a)*Math.cos(a))))
 );
       }, 'green', 3);
 
