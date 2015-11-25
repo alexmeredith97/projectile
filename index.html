@@ -1,18 +1,94 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    </style>
-  <link href="project.css" rel="stylesheet" type="text/css">
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Furious Projectile Simulationing</title>
+
+    <link href="project.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="wrapper">
+
+    <div id="projectiledisplay">
+        <canvas class="visualiser" width="800" height="700"></canvas> 
+    </div>
+
+    <div id="projectilesettings">
+        <form class="controls">
+            <div class="panel" style="background-color: white;">
+                <label for="bounceMax">Maximum number of bounces</label><br/>
+                <select id="bounceMax" name="bounceMax">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					
+                </select>
+
+                <br/><br/>
+
+                <label for="bounce">Bounce collision efficiency</label><br>
+                <input type="range" id="bounce" min="0" value="0.50" max="1" step="0.01">
+		</input>
+		<div class="compare">
+			<label for="bounceMax">Maximum number of bounces</label><br/>
+                	<select id="bounceMax" name="bounceMax">
+                    	<option value="0">0</option>
+                    	<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					
+                	</select>
+
+                <br/><br/>
+
+                <label for="bounce">Bounce collision efficiency</label><br>
+                <input type="range" id="bounce" min="0" value="0.50" max="1" step="0.01">
+		</input>
+		
+		<br/><br/>
+		
+		<button type="button" onclick="alert('Trajectory Plotted')">Plot Trajectory!</button>
+				
+				<br/><br/>
+		</div>
+
+                <br/><br/>
+				               
+                <label for="compare">Compare trajectories</label><br/>
+                <input type="checkbox" id="compare" name="compare" checked>
+				
+				<br/><br/>
+				
+				<button type="button" onclick="alert('Trajectory Plotted')">Plot Trajectory!</button>
+				
+				<br/><br/>
+				
+					
+				
+            </div>
+			
+			<div class="panel" style="background-color: white;">
+			</div>
+			
+			<div class="panel" style="background-color: white;">
+			</div>
+        </form>
+    </div>
+
+  </div>
   
-  </head>
-  <body>
-    <canvas id="myCanvas" width="578" height="300"></canvas>
-    <script src="app.js"></script>
-  </body>
-  
+  <script src="app.js"></script>
+</body>
 </html>
