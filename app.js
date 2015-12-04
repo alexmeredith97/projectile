@@ -153,8 +153,8 @@ function Graph(config) {
       var myGraph = new Graph({
         canvasId: 'myCanvas',
         minX: -0,
-        minY: -21,
-        maxX: 21,
+        minY: -20,
+        maxX: 20,
         maxY: 0,
         unitsPerTick: 1
       });
