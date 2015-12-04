@@ -173,3 +173,7 @@ function Graph(config) {
         return 1 * x;
       }, 'red', 3);
 
+function showMe (it, box) {
+  var vis = (box.checked) ? "block" : "none";
+  document.getElementById(it).style.display = vis;
+}
