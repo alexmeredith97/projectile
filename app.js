@@ -11,7 +11,7 @@ function Graph(config) {
         // constants
         this.axisColor = '#aaa';
         this.font = '8pt Calibri';
-        this.tickSize = 50;
+        this.tickSize = 20;
 
         // relationships
         this.context = this.canvas.getContext('2d');
@@ -153,8 +153,8 @@ function Graph(config) {
       var myGraph = new Graph({
         canvasId: 'myCanvas',
         minX: -0,
-        minY: -20,
-        maxX: 20,
+        minY: -21,
+        maxX: 21,
         maxY: 0,
         unitsPerTick: 1
       });
