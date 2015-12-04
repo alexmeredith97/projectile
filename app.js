@@ -11,7 +11,7 @@ function Graph(config) {
         // constants
         this.axisColor = '#aaa';
         this.font = '8pt Calibri';
-        this.tickSize = 20;
+        this.tickSize = 21;
 
         // relationships
         this.context = this.canvas.getContext('2d');
