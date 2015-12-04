@@ -1,6 +1,4 @@
-var a = 1;
-var u = 10;
-var g = 9.8;
+
 function Graph(config) {
         // user defined properties
         this.canvas = document.getElementById(config.canvasId);
@@ -163,7 +161,7 @@ function Graph(config) {
        
         
       myGraph.drawEquation(function(x) {
-          return ((x * Math.tan(a)) − ((g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a))));
+          return 3 * x;
 
       }, 'green', 3);
 
