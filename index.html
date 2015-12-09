@@ -16,13 +16,13 @@
     	<div id="projectilesettings">
         	<form class="controls">
         		<div class="panel" style="background-color: white;">
-                		<label for="angle">Angle of launch</label>
+                		<label for="angle">Angle of launch (°)</label>
                 		<input type="range" id="angle" min="0" value="45" max="90" step = "0.1" onchange="updateAngleInput(this.value)";>
                 		</input>
                 		<br/>
                 		<input type="number" id="angleInput" max="90" min="0" maxlength="5" value="" onchange="updateAngleSlider(this.value)";>
         			<br/><br/>
-                		<label for="height" maxlength="6" min="0">Launch height</label>
+                		<label for="height" maxlength="6" min="0">Launch height (m)</label>
                 		<input type="number"> 
                 		</input>
                 		<br/><br/>
@@ -42,7 +42,7 @@
 
                 		<br/><br/>
 
-                		<label for="bounce">Bounce collision efficiency</label><br>
+                		<label for="bounce">Bounce collision efficiency (%) </label><br>
                 		<input type="range" id="bounce" min="0" value="0.50" max="1" step="0.01">
 				</input>
 			</div>
@@ -51,13 +51,13 @@
                 		<input type="checkbox" id="compare" name="compare" onclick="showMe('div1', this)">
 			</div>	
 			<div id ="div1" class="panel" style="border-right-color: rgb(170, 170, 170); border-right-width: 1px; border-right-style: solid; background-color: white; display: none;">
-				<label for="angle2">Angle of launch</label>
+				<label for="angle2">Angle of launch (°)</label>
                 		<input type="range" id="angle2" min="0" value="45" max="90" step = "0.1" onchange="updateAngleInput2(this.value)";>
                 		</input>
                 		<br/>
                 		<input type="number" id="angleInput2" max="90" min="0" maxlength="5" value="" onchange="updateAngleSlider2(this.value)";>
 				<br/><br/>
-				<label for="height2" maxlength="6" min="0">Launch height</label> 
+				<label for="height2" maxlength="6" min="0">Launch height (m)</label> 
                 		<input type="number"> 
                 		</input>
                 		<br/><br/>
@@ -76,7 +76,7 @@
                 		</select>
 
                 		<br/><br/>
-                		<label for="bounce2">Bounce collision efficiency</label><br>
+                		<label for="bounce2">Bounce collision efficiency (%)</label><br>
                 		<input type="range" id="bounce2" min="0" value="0.50" max="1" step="0.01">
 				</input>
 		
