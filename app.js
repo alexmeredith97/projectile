@@ -172,8 +172,7 @@ function Graph(config) {
        
  
       myGraph.drawEquation(function(x) {
-          return  x*Math.tan(1)
-;
+          return  ((x*Math.tan(Math.PI)) - (9.8*x*x));
 
       }, 'green', 3);
 
