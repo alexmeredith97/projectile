@@ -172,7 +172,7 @@ function Graph(config) {
        
  
       myGraph.drawEquation(function(x) {
-          return  Math.sin(3*x*x)
+          return  x*Math.tan(1)
 ;
 
       }, 'green', 3);
