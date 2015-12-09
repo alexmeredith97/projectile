@@ -1,4 +1,4 @@
-function updateTextInput(val) {
+function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
     }
 function Graph(config) {
