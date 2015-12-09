@@ -16,9 +16,9 @@
     	<div id="projectilesettings">
         	<form class="controls">
         		<div class="panel" style="background-color: white;">
-        			<input type="radio" 
+        			<input type="number" id="angleInput" value="">
                 		<label for="angle">Angle of launch</label>
-                		<input type="range" id="angle" min="0" value="45" max="90" step = "0.1">
+                		<input type="range" id="angle" min="0" value="45" max="90" step = "0.1" onchange="updateTextInput(this.value);>
                 		</input>
                 		<br/><br/>
                 		<label for="height" maxlength="6" min="0">Launch height</label>
@@ -50,8 +50,9 @@
                 		<input type="checkbox" id="compare" name="compare" onclick="showMe('div1', this)">
 			</div>	
 			<div id ="div1" class="panel" style="border-right-color: rgb(170, 170, 170); border-right-width: 1px; border-right-style: solid; background-color: white; display: none;">
+				<input type="number" id="angleInput" value="">
 				<label for="angle">Angle of launch</label>
-                		<input type="range" id="angle" min="0" value="45" max="90" step = "0.1">
+                		<input type="range" id="angle" min="0" value="45" max="90" step = "0.1" onchange="updateTextInput(this.value);>
                 		</input>
                 		<br/><br/>
 				<label for="height" maxlength="6" min="0">Launch height</label> 
