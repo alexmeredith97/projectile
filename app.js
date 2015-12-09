@@ -1,4 +1,6 @@
-
+function updateTextInput(val) {
+      document.getElementById('angleInput').value=val; 
+    }
 function Graph(config) {
         // user defined properties
         this.canvas = document.getElementById(config.canvasId);
