@@ -4,6 +4,12 @@ function updateAngleInput(val) {
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
     }
+function updateAngleSlider(val) {
+      document.getElementById('angle').value=val;
+    }
+function updateAngleSlider2(val) {
+      document.getElementById('angle2').value=val;
+    }
 function Graph(config) {
         // user defined properties
         this.canvas = document.getElementById(config.canvasId);
