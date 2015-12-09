@@ -170,11 +170,9 @@ function Graph(config) {
         unitsPerTick: 1
       });
        
- var a = Math.PI
- var g = 9.8
- var u = 20
+ 
       myGraph.drawEquation(function(x) {
-          return  ((x * Math.tan(a)) − ((g * x * x )/(2 * u * u * Math.cos(a) * Math.cos(a))))
+          return  ((x * Math.tan(Math.PI)) − ((9.8 * x * x )/(2 * 20 * 20 * Math.cos(Math.PI) * Math.cos(Math.PI))))
 ;
 
       }, 'green', 3);
