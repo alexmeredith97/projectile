@@ -10,7 +10,7 @@
 <body>
 <div class="wrapper">
     	<div id="projectiledisplay">
-        <canvas id ="myCanvas" class="visualiser" width="800" height="450"></canvas> 
+        <canvas id ="myCanvas" class="visualiser" width="800" height="500"></canvas> 
     	</div>
 
     	<div id="projectilesettings">
@@ -53,16 +53,16 @@
 			<div id ="div1" class="panel" style="border-right-color: rgb(170, 170, 170); border-right-width: 1px; border-right-style: solid; background-color: white; display: none;">
 				<input type="number" id="angleInput2" max="90" min="0" maxlength="2" value="">
 				<br/><br/>
-				<label for="angle">Angle of launch</label>
-                		<input type="range" id="angle" min="0" value="45" max="90" step = "0.1" onchange="updateAngleInput2(this.value)";>
+				<label for="angle2">Angle of launch</label>
+                		<input type="range" id="angle2" min="0" value="45" max="90" step = "0.1" onchange="updateAngleInput2(this.value)";>
                 		</input>
                 		<br/><br/>
-				<label for="height" maxlength="6" min="0">Launch height</label> 
+				<label for="height2" maxlength="6" min="0">Launch height</label> 
                 		<input type="number"> 
                 		</input>
                 		<br/><br/>
-				<label for="bounceMax">Maximum number of bounces</label><br/>
-                		<select id="bounceMax" name="bounceMax">
+				<label for="bounceMax2">Maximum number of bounces</label><br/>
+                		<select id="bounceMax2" name="bounceMax2">
                     			<option value="0">0</option>
                     			<option value="1">1</option>
 					<option value="2">2</option>
@@ -76,8 +76,8 @@
                 		</select>
 
                 		<br/><br/>
-                		<label for="bounce">Bounce collision efficiency</label><br>
-                		<input type="range" id="bounce" min="0" value="0.50" max="1" step="0.01">
+                		<label for="bounce2">Bounce collision efficiency</label><br>
+                		<input type="range" id="bounce2" min="0" value="0.50" max="1" step="0.01">
 				</input>
 		
 				<br/><br/>
