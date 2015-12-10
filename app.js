@@ -177,9 +177,10 @@ function Graph(config) {
         maxY: 0,
         unitsPerTick: 1
       });
-      
  
-     
+       myGraph.drawEquation(function(x) {
+          return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
+      }, 'red', 3);
 
       myGraph.drawEquation(function(x) {
         return x * x;
@@ -189,10 +190,6 @@ function showMe (it, box) {
   var vis = (box.checked) ? "block" : "none";
   document.getElementById(it).style.display = vis;
 }
-function Draw() {
-       myGraph.drawEquation(function(x) {
-          return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
 
-      }, 'red', 3);
-}
+
 }
