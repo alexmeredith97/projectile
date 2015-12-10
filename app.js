@@ -3,20 +3,20 @@ var u = 15
 var g = 9.8
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
-      Draw();
+      
     }
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
-      Draw();
+      
     }
 function updateAngleSlider(val) {
       document.getElementById('angle').value=val;
-      Draw();
-      a = document.getElementById("angle").value
+      
+      //a = document.getElementById("angle").value
     }
 function updateAngleSlider2(val) {
       document.getElementById('angle2').value=val;
-      Draw();
+      
     }
 function Graph(config) {
         // user defined properties
