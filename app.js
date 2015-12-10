@@ -8,7 +8,7 @@ Magic();
 function Clear(){
       var c=document.getElementById("myCanvas");
       var ctx=c.getContext("2d");
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.width = canvas.width;
 }
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
