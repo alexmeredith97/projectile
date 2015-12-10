@@ -1,6 +1,6 @@
-var a = 1.2
-var u = 15 
-var g = 9.8
+var a = 1.2;
+var u = 15;
+var g = 9.8;
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
       
