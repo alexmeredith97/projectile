@@ -170,22 +170,18 @@ function Graph(config) {
         unitsPerTick: 1
       });
       
-      var a = 1
-      var u = 14 
+      var a = 1.2
+      var u = 15 
       var g = 9.8
  
       myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
 
-      }, 'green', 3);
+      }, 'red', 3);
 
       myGraph.drawEquation(function(x) {
         return x * x;
       }, 'blue', 3);
-
-      myGraph.drawEquation(function(x) {
-        return 1 * x;
-      }, 'red', 3);
 
 function showMe (it, box) {
   var vis = (box.checked) ? "block" : "none";
