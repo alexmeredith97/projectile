@@ -1,19 +1,22 @@
+var a = 1.2
+var u = 15 
+var g = 9.8
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
-      Graph.prototype.drawEquation;
+      Draw();
     }
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
-      Graph.prototype.drawEquation;
+      Draw();
     }
 function updateAngleSlider(val) {
       document.getElementById('angle').value=val;
-      Graph.prototype.drawEquation;
-      var a = document.getElementById("angle").value
+      Draw();
+      a = document.getElementById("angle").value
     }
 function updateAngleSlider2(val) {
       document.getElementById('angle2').value=val;
-      Graph.prototype.drawEquation;
+      Draw();
     }
 function Graph(config) {
         // user defined properties
@@ -175,14 +178,8 @@ function Graph(config) {
         unitsPerTick: 1
       });
       
-      var a = 1.2
-      var u = 15 
-      var g = 9.8
  
-      myGraph.drawEquation(function(x) {
-          return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
-
-      }, 'red', 3);
+     
 
       myGraph.drawEquation(function(x) {
         return x * x;
@@ -191,4 +188,11 @@ function Graph(config) {
 function showMe (it, box) {
   var vis = (box.checked) ? "block" : "none";
   document.getElementById(it).style.display = vis;
+}
+function Draw() {
+       myGraph.drawEquation(function(x) {
+          return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
+
+      }, 'red', 3);
+}
 }
