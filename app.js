@@ -13,7 +13,7 @@ function updateAngleInput(val) {
     }
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
-      A = document.getElementById("angleInput").value
+      A = document.getElementById("angleInput2").value
       context.clearRect(0, 0, canvas.width, canvas.height);
       Draw();
       Draw2();
@@ -27,7 +27,7 @@ function updateAngleSlider(val) {
     }
 function updateAngleSlider2(val) {
       document.getElementById('angle2').value=val;
-      A = document.getElementById("angleInput").value
+      A = document.getElementById("angle2").value
       context.clearRect(0, 0, canvas.width, canvas.height);
       Draw();
       Draw2();
