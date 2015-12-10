@@ -6,8 +6,6 @@ var U = 16
 var G = 9.8
 Magic();
 function Clear(){
-      var c=document.getElementById("myCanvas");
-      var ctx=c.getContext("2d");
       canvas.width = canvas.width;
 }
 function updateAngleInput(val) {
