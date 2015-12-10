@@ -1,14 +1,19 @@
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
+      Graph.prototype.drawEquation;
     }
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
+      Graph.prototype.drawEquation;
     }
 function updateAngleSlider(val) {
       document.getElementById('angle').value=val;
+      Graph.prototype.drawEquation;
+      var a = document.getElementById("angle").value
     }
 function updateAngleSlider2(val) {
       document.getElementById('angle2').value=val;
+      Graph.prototype.drawEquation;
     }
 function Graph(config) {
         // user defined properties
