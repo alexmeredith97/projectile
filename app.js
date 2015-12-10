@@ -3,20 +3,22 @@ var u = 15;
 var g = 9.8;
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
-      
+      a = document.getElementById("angleInput").value
+      Draw();
     }
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
-      
+      Draw();
     }
 function updateAngleSlider(val) {
       document.getElementById('angle').value=val;
       
-      //a = document.getElementById("angle").value
+      a = document.getElementById("angle").value;
+      Draw();
     }
 function updateAngleSlider2(val) {
       document.getElementById('angle2').value=val;
-      
+      Draw();
     }
 function Graph(config) {
         // user defined properties
@@ -178,9 +180,7 @@ function Graph(config) {
         unitsPerTick: 1
       });
  
-       myGraph.drawEquation(function(x) {
-          return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
-      }, 'red', 3);
+      
 
       myGraph.drawEquation(function(x) {
         return x * x;
@@ -190,6 +190,8 @@ function showMe (it, box) {
   var vis = (box.checked) ? "block" : "none";
   document.getElementById(it).style.display = vis;
 }
-
-
-
+function Draw(){
+ myGraph.drawEquation(function(x) {
+          return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
+      }, 'red', 3);
+}
