@@ -1,36 +1,17 @@
 var a = 1.2;
 var u = 15;
 var g = 9.8;
-var A = 1.6
-var U = 16
-var G = 9.8
-function updateAngleInput(val) {
-      document.getElementById('angleInput').value=val; 
-      a = ( document.getElementById("angleInput").value / 180 ) * Math.PI;
-      
-      Draw();
-      Draw2();
-    }
-function updateAngleInput2(val) {
-      document.getElementById('angleInput2').value=val; 
-      A = ( document.getElementById("angleInput2").value / 180) * Math.PI;
-      
-      Draw();
-      Draw2();
-    }
-function updateAngleSlider(val) {
-      document.getElementById('angle').value=val;
-      a = ( document.getElementById("angle").value / 180 ) * Math.PI;
-      
-      Draw();
-      Draw2();
-    }
-function updateAngleSlider2(val) {
-      document.getElementById('angle2').value=val;
-      A = ( document.getElementById("angleInput2").value / 180 ) * Math.PI;
-      
-      Draw();
-      Draw2();
+var A = 1.6;
+var U = 16;
+var G = 9.8;
+
+function UpdateAngles(ThingToChange,Variable,val){
+      document.getElementById('"'ThingToChange'"').value = val; 
+      Variable = ( document.getElementById('"'ThingToChange'"').value / 180 ) * Math.PI;
+}
+function Update(){
+          Draw();
+          Draw2();
     }
 function Graph(config) {
         // user defined properties
