@@ -6,14 +6,9 @@ var U = 16
 var G = 9.8
 Magic();
 //function Clear(){
-      //canvasId.width = canvasId.width;
-      //var context = this.context;
-      //this.canvas = document.getElementById('myCanvas');
-      //this.context = this.canvas.getContext('2d');
-      
-      //var c=document.getElementById("myCanvas");
-      //var ctx=c.getContext("2d");
-      //context.clearRect(0, 0, canvas.width, canvas.height);
+     // var c=document.getElementById("myCanvas");
+     // var ctx=c.getContext("2d");
+     // ctx.clearRect(0,0,c.width, c.height);
 //}
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
@@ -219,7 +214,7 @@ function showMe (it, box) {
   document.getElementById(it).style.display = vis;
 }
 function Draw(){
-      myGraph.drawEquation(function(x) {
+ myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
       }, 'red', 3);
 }
