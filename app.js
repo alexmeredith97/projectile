@@ -7,16 +7,14 @@ var G = 9.8
 Magic();
 //function Clear(){
       //canvasId.width = canvasId.width;
-      
       //var context = this.context;
       //this.canvas = document.getElementById('myCanvas');
       //this.context = this.canvas.getContext('2d');
-      //context.clearRect(0, 0, canvas.width, canvas.height);
       
       //var c=document.getElementById("myCanvas");
       //var ctx=c.getContext("2d");
-      
-}
+      //context.clearRect(0, 0, canvas.width, canvas.height);
+//}
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
       a = document.getElementById("angleInput").value
@@ -80,11 +78,7 @@ function Magic(){
               this.drawXAxis();
               this.drawYAxis();
             }
-            //var context = this.context;
-            this.canvas = document.getElementById('myCanvas');
-            this.context = this.canvas.getContext('2d');
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            
+      
             Graph.prototype.drawXAxis = function() {
               var context = this.context;
               context.save();
