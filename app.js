@@ -8,6 +8,7 @@ var G = 9.8;
 function UpdateAngles(ThingToChange,Variable,val){
       document.getElementById('"'ThingToChange'"').value = val; 
       Variable = ( document.getElementById('"'ThingToChange'"').value / 180 ) * Math.PI;
+      Update();
 }
 function Update(){
           Draw();
