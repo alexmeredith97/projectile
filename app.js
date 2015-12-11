@@ -5,20 +5,22 @@ var A = 1.6
 var U = 16
 var G = 9.8
 Magic();
-function Clear(){
+//function Clear(){
       //canvasId.width = canvasId.width;
-      var context = this.context;
-      this.canvas = document.getElementById('myCanvas');
-      this.context = this.canvas.getContext('2d');
+      
+      //var context = this.context;
+      //this.canvas = document.getElementById('myCanvas');
+      //this.context = this.canvas.getContext('2d');
+      //context.clearRect(0, 0, canvas.width, canvas.height);
       
       //var c=document.getElementById("myCanvas");
       //var ctx=c.getContext("2d");
-      context.clearRect(0, 0, canvas.width, canvas.height);
+      
 }
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
       a = document.getElementById("angleInput").value
-      Clear();
+      //Clear();
       Magic();
       Draw();
       Draw2();
@@ -26,7 +28,7 @@ function updateAngleInput(val) {
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
       A = document.getElementById("angleInput2").value
-      Clear();
+      //Clear();
       Magic();
       Draw();
       Draw2();
@@ -34,7 +36,7 @@ function updateAngleInput2(val) {
 function updateAngleSlider(val) {
       document.getElementById('angle').value=val;
       a = document.getElementById("angle").value;
-      Clear();
+      //Clear();
       Magic();
       Draw();
       Draw2();
@@ -42,7 +44,7 @@ function updateAngleSlider(val) {
 function updateAngleSlider2(val) {
       document.getElementById('angle2').value=val;
       A = document.getElementById("angle2").value
-      Clear();
+      //Clear();
       Magic();
       Draw();
       Draw2();
@@ -78,7 +80,11 @@ function Magic(){
               this.drawXAxis();
               this.drawYAxis();
             }
-      
+            //var context = this.context;
+            this.canvas = document.getElementById('myCanvas');
+            this.context = this.canvas.getContext('2d');
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            
             Graph.prototype.drawXAxis = function() {
               var context = this.context;
               context.save();
@@ -219,14 +225,6 @@ function showMe (it, box) {
   document.getElementById(it).style.display = vis;
 }
 function Draw(){
-      var myGraph = new Graph({
-              canvasId: 'myCanvas',
-              minX: -0,
-              minY: -20,
-              maxX: 20,
-              maxY: 0,
-              unitsPerTick: 1
-            });
       myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
       }, 'red', 3);
