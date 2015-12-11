@@ -219,7 +219,15 @@ function showMe (it, box) {
   document.getElementById(it).style.display = vis;
 }
 function Draw(){
- myGraph.drawEquation(function(x) {
+      var myGraph = new Graph({
+              canvasId: 'myCanvas',
+              minX: -0,
+              minY: -20,
+              maxX: 20,
+              maxY: 0,
+              unitsPerTick: 1
+            });
+      myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
       }, 'red', 3);
 }
