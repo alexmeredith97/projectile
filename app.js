@@ -6,28 +6,28 @@ var U = 16
 var G = 9.8
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
-      a = document.getElementById("angleInput").value
+      a = ( document.getElementById("angleInput").value / 180 ) * Math.PI;
       
       Draw();
       Draw2();
     }
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
-      A = document.getElementById("angleInput2").value
+      A = ( document.getElementById("angleInput2").value / 180) * Math.PI;
       
       Draw();
       Draw2();
     }
 function updateAngleSlider(val) {
       document.getElementById('angle').value=val;
-      a = document.getElementById("angle").value;
+      a = ( document.getElementById("angle").value / 180 ) * Math.PI;
       
       Draw();
       Draw2();
     }
 function updateAngleSlider2(val) {
       document.getElementById('angle2').value=val;
-      A = document.getElementById("angleInput2").value
+      A = ( document.getElementById("angleInput2").value / 180 ) * Math.PI;
       
       Draw();
       Draw2();
