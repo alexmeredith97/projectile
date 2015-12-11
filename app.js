@@ -7,14 +7,14 @@ var G = 9.8
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
       a = ( document.getElementById("angleInput").value / 180 ) * Math.PI;
-      Graph(config);
+      
       Draw();
       Draw2();
     }
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
       A = ( document.getElementById("angleInput2").value / 180) * Math.PI;
-      Graph(config);
+      
       Draw();
       Draw2();
     }
@@ -22,7 +22,6 @@ function updateAngleSlider(val) {
       document.getElementById('angle').value=val;
       a = ( document.getElementById("angle").value / 180 ) * Math.PI;
       
-      Graph(config);
       Draw();
       Draw2();
     }
@@ -30,7 +29,6 @@ function updateAngleSlider2(val) {
       document.getElementById('angle2').value=val;
       A = ( document.getElementById("angleInput2").value / 180 ) * Math.PI;
       
-      Graph(config)
       Draw();
       Draw2();
     }
@@ -208,7 +206,5 @@ function Draw2(){
           return  ((x*Math.tan(A)) - (G*x*x)/(2*U*U*Math.cos(A)*Math.cos(A)));
       }, 'blue', 3);
 }
-function Clear(){
-      ctx = myGraph
-}
+
 
