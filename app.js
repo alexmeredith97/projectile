@@ -5,15 +5,10 @@ var A = 1.6
 var U = 16
 var G = 9.8
 Magic();
-//function Clear(){
-     // var c=document.getElementById("myCanvas");
-     // var ctx=c.getContext("2d");
-     // ctx.clearRect(0,0,c.width, c.height);
-//}
+
 function updateAngleInput(val) {
       document.getElementById('angleInput').value=val; 
       a = document.getElementById("angleInput").value
-      //Clear();
       Magic();
       Draw();
       Draw2();
@@ -21,7 +16,6 @@ function updateAngleInput(val) {
 function updateAngleInput2(val) {
       document.getElementById('angleInput2').value=val; 
       A = document.getElementById("angleInput2").value
-      //Clear();
       Magic();
       Draw();
       Draw2();
@@ -29,7 +23,6 @@ function updateAngleInput2(val) {
 function updateAngleSlider(val) {
       document.getElementById('angle').value=val;
       a = document.getElementById("angle").value;
-      //Clear();
       Magic();
       Draw();
       Draw2();
@@ -37,7 +30,6 @@ function updateAngleSlider(val) {
 function updateAngleSlider2(val) {
       document.getElementById('angle2').value=val;
       A = document.getElementById("angle2").value
-      //Clear();
       Magic();
       Draw();
       Draw2();
@@ -214,9 +206,9 @@ function showMe (it, box) {
   document.getElementById(it).style.display = vis;
 }
 function Draw(){
- myGraph.drawEquation(function(x) {
+     myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
-      }, 'red', 3);
+     }, 'red', 3);
 }
 function Draw2(){
       myGraph.drawEquation(function(x) {
