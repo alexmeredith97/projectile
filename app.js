@@ -7,8 +7,10 @@ var G = 9.8
 Magic();
 function Clear(){
       //canvasId.width = canvasId.width;
-      this.canvas = document.getElementById(myCanvas);
       var context = this.context;
+      this.canvas = document.getElementById('myCanvas');
+      this.context = this.canvas.getContext('2d');
+      
       //var c=document.getElementById("myCanvas");
       //var ctx=c.getContext("2d");
       context.clearRect(0, 0, canvas.width, canvas.height);
