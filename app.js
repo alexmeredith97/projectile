@@ -5,15 +5,18 @@ var A ;
 var U = 16;
 var G = 9.8;
 
-function updateAngles(ThingToChange,Variable,val){
+function updateAngles(ThingToChange,val){
       document.getElementById(ThingToChange).value = val; 
-      Variable = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
-      myGraph.drawEquation(function(x) {
-          return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
-      }, 'red', 3);
-      myGraph.drawEquation(function(x) {
-          return  ((x*Math.tan(A)) - (G*x*x)/(2*U*U*Math.cos(A)*Math.cos(A)));
-      }, 'blue', 3);
+      if (document.getElementById(ThingToChange) === "angleInput" || "angle"){
+            a = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
+            Draw();
+            Draw2();
+      }
+      else if (document.getElementById(ThingToChange) === "angleInput2" || "angle2"){
+            A = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
+            Draw();
+            Draw2();
+      }
 }
 
     
