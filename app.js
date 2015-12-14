@@ -1,9 +1,9 @@
 var a ;
 var u = 15;
 var g = 9.8;
-var A ;
-var U = 16;
-var G = 9.8;
+var aa ;
+var uu = 17;
+var gg = 9.8;
 
 function updateAngles(ThingToChange,val){
       document.getElementById(ThingToChange).value = val; 
@@ -13,7 +13,7 @@ function updateAngles(ThingToChange,val){
             
       }
       else if (document.getElementById(ThingToChange) === "angleInput2" || "angle2"){
-            A = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
+            a2 = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
             
             Draw2();
       }
@@ -191,7 +191,7 @@ function Draw(){
 }
 function Draw2(){
       myGraph.drawEquation(function(x) {
-          return  ((x*Math.tan(A)) - (G*x*x)/(2*U*U*Math.cos(A)*Math.cos(A)));
+          return  ((x*Math.tan(aa)) - (gg*x*x)/(2*uu*uu*Math.cos(aa)*Math.cos(aa)));
       }, 'blue', 3);
 }
 
