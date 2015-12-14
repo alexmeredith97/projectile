@@ -12,7 +12,7 @@ function updateAngles(ThingToChange,val){
             Draw();
             
       }
-      else if (document.getElementById(ThingToChange) === "angleInput2" || "angle2"){
+      if (document.getElementById(ThingToChange) === "angleInput2" || "angle2"){
             a2 = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
             
             Draw2();
