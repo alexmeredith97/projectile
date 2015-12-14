@@ -1,7 +1,7 @@
-var a = 1.2;
+var a ;
 var u = 15;
 var g = 9.8;
-var A = 1.6;
+var A ;
 var U = 16;
 var G = 9.8;
 
