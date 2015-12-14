@@ -8,12 +8,11 @@ var G = 9.8;
 function updateAngles(ThingToChange,Variable,val){
       document.getElementById(ThingToChange).value = val; 
       Variable = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
-      Update();
+      Draw();
+      Draw2();
 }
-function Update(){
-          Draw();
-          Draw2();
-    }
+
+    
 function Graph(config) {
         // user defined properties
         this.canvas = document.getElementById(config.canvasId);
