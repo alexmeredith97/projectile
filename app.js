@@ -10,11 +10,11 @@ function updateAngles(ThingToChange,val){
       if (document.getElementById(ThingToChange) === "angleInput" || "angle"){
             a = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
             Draw();
-            Draw2();
+            
       }
       else if (document.getElementById(ThingToChange) === "angleInput2" || "angle2"){
             A = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
-            Draw();
+            
             Draw2();
       }
 }
