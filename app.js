@@ -7,17 +7,14 @@ var gg = 9.8;
 
 function updateAngles(ThingToChange,val){
       document.getElementById(ThingToChange).value = val; 
-      if (document.getElementById(ThingToChange) === "angleInput" || "angle"){
-            a = ( document.getElementById("angle").value / 180 ) * Math.PI;
-            Draw();
-           
-      }
       
-      if (document.getElementById(ThingToChange) === "angleInput2" || "angle2"){
-            aa = ( document.getElementById("angle2").value / 180 ) * Math.PI;
-            
-            Draw2();
-      }
+      a = ( document.getElementById("angle").value / 180 ) * Math.PI;
+      
+
+      aa = ( document.getElementById("angle2").value / 180 ) * Math.PI;
+      Draw();
+      Draw2();
+      
 }
 
     
