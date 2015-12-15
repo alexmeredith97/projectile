@@ -8,12 +8,12 @@ var gg = 9.8;
 function updateAngles(ThingToChange,val){
       document.getElementById(ThingToChange).value = val; 
       if (document.getElementById(ThingToChange) === "angleInput" || "angle"){
-            a = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
+            a = ( val / 180 ) * Math.PI;
             Draw();
             
       }
       if (document.getElementById(ThingToChange) === "angleInput2" || "angle2"){
-            aa = ( document.getElementById(ThingToChange).value / 180 ) * Math.PI;
+            aa = ( val / 180 ) * Math.PI;
             
             Draw2();
       }
