@@ -7,14 +7,12 @@ var gg = 9.8;
 
 function updateAngles(ThingToChange,val){
       document.getElementById(ThingToChange).value = val; 
-      
       a = ( document.getElementById("angle").value / 180 ) * Math.PI;
-      
-
       aa = ( document.getElementById("angle2").value / 180 ) * Math.PI;
       Draw();
-      Draw2();
-      
+      if(document.getElementById("compare").checked){
+         Draw2();   
+      }
 }
 
     
