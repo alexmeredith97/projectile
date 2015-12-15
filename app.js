@@ -167,6 +167,10 @@ function Graph(config) {
          */
         context.scale(this.scaleX, -this.scaleY);
       };
+      Graph.prototype.clearCanvas = function(){
+        var context = this.context;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      };
       var myGraph = new Graph({
         canvasId: 'myCanvas',
         minX: -0,
@@ -175,7 +179,7 @@ function Graph(config) {
         maxY: 0,
         unitsPerTick: 1
       });
-      Draw();
+      
 function showMe (it, box) {
   var vis = (box.checked) ? "block" : "none";
   document.getElementById(it).style.display = vis;
@@ -190,5 +194,7 @@ function Draw2(){
           return  ((x*Math.tan(aa)) - (gg*x*x)/(2*uu*uu*Math.cos(aa)*Math.cos(aa)));
       }, 'blue', 3);
 }
-
+function Clear(){
+      Graph.prototype.clearCanvas();
+}
 
