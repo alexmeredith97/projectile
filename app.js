@@ -168,8 +168,9 @@ function Graph(config) {
         context.scale(this.scaleX, -this.scaleY);
       };
       Graph.prototype.clearCanvas = function(){
-        var context = this.context;
-        context.clearRect(0, 0, canvas.width, canvas.height);
+            this.canvas = document.getElementById(config.canvasId);
+            var context = this.context;
+            context.clearRect(0, 0, canvas.width, canvas.height);
       };
       var myGraph = new Graph({
         canvasId: 'myCanvas',
