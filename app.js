@@ -168,7 +168,7 @@ function Graph(config) {
         context.scale(this.scaleX, -this.scaleY);
       };
       Graph.prototype.clearCanvas = function(){
-            this.canvas = document.getElementById(config.canvasId);
+            this.canvas = document.getElementById("myCanvas");
             var context = this.context;
             context.clearRect(0, 0, canvas.width, canvas.height);
       };
