@@ -167,9 +167,9 @@ function Graph(config) {
          */
         context.scale(this.scaleX, -this.scaleY);
       };
-      Graph.prototype.clearCanvas = function(){
-        var context = this.context;
-        context.clearRect(0, 0, canvas.width, canvas.height);
+      //Graph.prototype.clearCanvas = function(){
+        //var context = this.context;
+        //context.clearRect(0, 0, canvas.width, canvas.height);
       };
       var myGraph = new Graph({
         canvasId: 'myCanvas',
@@ -185,16 +185,19 @@ function showMe (it, box) {
   document.getElementById(it).style.display = vis;
 }
 function Draw(){
- myGraph.drawEquation(function(x) {
+      var context = this.context;
+      myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
       }, 'red', 3);
 }
 function Draw2(){
+      var context = this.context;
       myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(aa)) - (gg*x*x)/(2*uu*uu*Math.cos(aa)*Math.cos(aa)));
       }, 'blue', 3);
 }
 function Clear(){
-      Graph.prototype.clearCanvas();
+      var context = this.context;
+      context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
