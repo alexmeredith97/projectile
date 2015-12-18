@@ -22,6 +22,13 @@
                 		<br/>
                 		<input type="number" id="angleInput" max="90" min="0" maxlength="5" value="" onchange='updateAngles("angle",this.value)';>
         			<br/><br/>
+        			<label for="speed">Speed of launch (m/s)</label>
+        			<input type="range" id="speed" min="0" value="" max="22" onchange='updateAngles("speedInput",this.value)';>
+        			</input>
+        			<br/>
+        			<input type="number" id="speedInput" max="20" min = "0" maxlength="5" Value ="" onchange='updateAngles("speed",this.value)';>
+                		</input>
+                		<br/>
                 		<label for="height" maxlength="6" min="0">Launch height (m)</label>
                 		<input type="number"> 
                 		</input>
