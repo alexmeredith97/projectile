@@ -17,18 +17,18 @@
         	<form class="controls">
         		<div class="panel" style="background-color: white;">
                 		<label for="angle">Angle of launch (°)</label>
-                		<input type="range" id="angle" min="0" value="90" max="90" step = "0.01" onchange='updateAngles("angleInput",this.value)';>
+                		<input type="range" id="angle" min="0" value="90" max="90" step="0.01" onchange='updateAngles("angleInput",this.value)';>
                 		</input>
                 		<br/>
                 		<input type="number" id="angleInput" max="90" min="0" maxlength="5" value="" onchange='updateAngles("angle",this.value)';>
         			<br/><br/>
         			<label for="speed">Speed of launch (m/s)</label>
-        			<input type="range" id="speed" min="0" value="" max="22" onchange='updateAngles("speedInput",this.value)';>
+        			<input type="range" id="speed" min="0" value="" max="22" step="0.01" onchange='updateAngles("speedInput",this.value)';>
         			</input>
         			<br/>
         			<input type="number" id="speedInput" max="20" min = "0" maxlength="5" Value ="" onchange='updateAngles("speed",this.value)';>
                 		</input>
-                		<br/>
+                		<br/><br/>
                 		<label for="height" maxlength="6" min="0">Launch height (m)</label>
                 		<input type="number"> 
                 		</input>
@@ -64,6 +64,13 @@
                 		<br/>
                 		<input type="number" id="angleInput2" max="90" min="0" maxlength="5" value="" onchange='updateAngles("angle2",this.value)';>
 				<br/><br/>
+				<label for="speed2">Speed of launch (m/s)</label>
+        			<input type="range" id="speed2" min="0" value="" max="22" step="0.01" onchange='updateAngles("speedInput2",this.value)';>
+        			</input>
+        			<br/>
+        			<input type="number" id="speedInput2" max="20" min = "0" maxlength="5" Value ="" onchange='updateAngles("speed2",this.value)';>
+                		</input>
+                		<br/><br/>
 				<label for="height2" maxlength="6" min="0">Launch height (m)</label> 
                 		<input type="number"> 
                 		</input>
