@@ -1,14 +1,16 @@
 var a ;
-var u = 15;
+var u ;
 var g = 9.8;
 var aa ;
-var uu = 17;
+var uu ;
 var gg = 9.8;
 
 function updateAngles(ThingToChange,val){
       document.getElementById(ThingToChange).value = val; 
       a = ( document.getElementById("angle").value / 180 ) * Math.PI;
       aa = ( document.getElementById("angle2").value / 180 ) * Math.PI;
+      u = ( document.getElementById("speed"));
+      uu = ( document.getElementById("speed2"));
       Draw();
       if(document.getElementById("compare").checked){
          Draw2();   
