@@ -9,8 +9,8 @@ function updateAngles(ThingToChange,val){
       document.getElementById(ThingToChange).value = val; 
       a = ( document.getElementById("angle").value / 180 ) * Math.PI;
       aa = ( document.getElementById("angle2").value / 180 ) * Math.PI;
-      u = ( document.getElementById("speed"));
-      uu = ( document.getElementById("speed2"));
+      u = ( document.getElementById("speed").value);
+      uu = ( document.getElementById("speed2").value);
       Draw();
       if(document.getElementById("compare").checked){
          Draw2();   
