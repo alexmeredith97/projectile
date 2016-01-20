@@ -190,7 +190,7 @@ function showMe (it, box) {
 function Draw(){
  myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
-      }, 'red', 3);
+      }, 'brown', 3);
 }
 function Draw2(){
       myGraph.drawEquation(function(x) {
