@@ -190,12 +190,12 @@ function showMe (it, box) {
 function Draw(){
  myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
-      }, 'orange', 3);
+      }, 'green', 3);
 }
 function Draw2(){
       myGraph.drawEquation(function(x) {
           return  ((x*Math.tan(aa)) - (gg*x*x)/(2*uu*uu*Math.cos(aa)*Math.cos(aa)));
-      }, 'pink', 3);
+      }, 'purple', 3);
 }
 function Clear(){
       Graph.prototype.clearCanvas();
