@@ -1,22 +1,22 @@
 html {
-	height: 90%;
-	font-family: Courier;
-	font-size: 10px;
-	background-color: white;
+  height: 90%;
+  font-family: Courier;
+  font-size: 10px;
+  background-color: white;
 }
 
 body {
-	width: 100%;
-	height: inherit;
+  width: 100%;
+  height: inherit;
   margin: 0;
 }
 
 .wrapper {
-	height: 100%;
-	max-width: 800px;
-	margin-top: 50px;
-	margin-left: auto;
-	margin-right: auto;
+  height: 100%;
+  max-width: 800px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #projectdisplay {
@@ -29,13 +29,11 @@ body {
 }
 
 .panel {
-	width: 20%;
-	float: left;
-	height: 300px;
-}
-.compare {
-	position: absolute;
-    left: 700px;
+  width: calc(100%/3 - 15px - 1px - 1px/3);
+  float: left;
+  height: 250px;
+  padding-left: 15px;
+  border-left: 1px solid #aaa;
 }
 
 label {
