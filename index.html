@@ -1,115 +1,121 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Projectile Simulation</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Projectile Simulation</title>
 
-    <link href="project.css" rel="stylesheet" type="text/css">
+	<link href="project.css" rel="stylesheet" type="text/css">
 </head>
-<body>
-<div class="wrapper">
-    	<div id="projectiledisplay">
-        <canvas id ="myCanvas" class="visualiser" width="800" height="500"></canvas> 
-    	</div>
 
-    	<div id="projectilesettings">
-        	<form class="controls">
-        		<div class="panel" style="background-color: white;">
-                		<label for="angle">Angle of launch (°)</label>
-                		<input type="range" id="angle" min="0" value="90" max="90" step="0.01" onchange='updateAngles("angleInput",this.value)';>
-                		</input>
-                		<br/>
-                		<input type="number" id="angleInput" max="90" min="0" maxlength="5" value="" onchange='updateAngles("angle",this.value)';>
-        			<br/><br/>
-        			<label for="speed">Speed of launch (m/s)</label>
-        			<input type="range" id="speed" min="0" value="22" max="22" step="0.01" onchange='updateAngles("speedInput",this.value)';>
-        			</input>
-        			<br/>
-        			<input type="number" id="speedInput" max="22" min = "0" maxlength="5" Value ="" onchange='updateAngles("speed",this.value)';>
-                		</input>
-                		<br/><br/>
-                		<label for="height" maxlength="6" min="0">Launch height (m)</label>
-                		<input type="number"> 
-                		</input>
-                		<br/><br/>
-                		<label for="bounceMax">Maximum number of bounces</label><br/>
-                		<select id="bounceMax" name="bounceMax">
-                    			<option value="0">0</option>
-                    			<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					
-                		</select>
+<body onload="">
+	<div class="wrapper">
+		<div id="projectiledisplay">
+			<canvas id="graph" class="visualiser" width="800" height="500" style="border: 0px"></canvas>
+		</div>
 
-                		<br/><br/>
+		<div id="projectilesettings">
+			<form class="controls">
+				<div class="panel" style="background-color: white;">
+					<label for="angle">Angle of launch (°)</label>
+					<input type="range" id="angleRange1" min="0" value="45" max="90" step="0.01" oninput='updateValues("angleNumber1",this.value)' onchange='updateValues("angleNumber1",this.value)' ;>
+					</input>
+					<br/>
+					<input type="number" id="angleNumber1" max="90" value="45" min="0" maxlength="5" value="" oninput='updateValues("angleRange1",this.value)'  onchange='updateValues("angleRange1",this.value)' ;>
+					<br/>
+					<br/>
+					<label for="speed">Speed of launch (m/s)</label>
+					<input type="range" id="speedRange1" min="0" value="20" max="30" step="0.01" oninput='updateValues("speedNumber1",this.value)' onchange='updateValues("speedNumber1",this.value)' ;>
+					</input>
+					<br/>
+					<input type="number" id="speedNumber1" max="30"  value="20" min="0" maxlength="5" Value="" oninput='updateValues("speedRange1",this.value)' onchange='updateValues("speedRange1",this.value)' ;>
+					</input>
+					<br/>
+					<br/>
+					<label for="height" maxlength="6" min="0">Launch height (m)</label>
+					<input type="number" id="heightNumber1" min="0" value="0" oninput='syncVariables();' onchange='syncVariables();'>
+					</input>
+					<br/>
+					<br/>
+					<label for="bounceMax">Maximum number of bounces</label>
+					<br/>
+					<select id="bounceMax1" name="bounceMax" value="0" oninput='syncVariables();' onchange='syncVariables();'>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+					</select>
 
-                		<label for="bounce">Bounce collision efficiency (%) </label><br>
-                		<input type="range" id="bounce" min="0" value="0.50" max="1" step="0.01">
-				</input>
-			</div>
-			<div class="panel" style="background-color: white;">
-				<label for="compare">Compare trajectories</label><br/>
-                		<input type="checkbox" id="compare" name="compare" onclick="showMe('div1', this)">
-			</div>	
-			<div id ="div1" class="panel" style="border-right-color: rgb(170, 170, 170); border-right-width: 1px; border-right-style: solid; background-color: white; display: none;">
-				<label for="angle2">Angle of launch (°)</label>
-                		<input type="range" id="angle2" min="0" value="90" max="90" step = "0.01" onchange='updateAngles("angleInput2",this.value)';>
-                		</input>
-                		<br/>
-                		<input type="number" id="angleInput2" max="90" min="0" maxlength="5" value="" onchange='updateAngles("angle2",this.value)';>
-				<br/><br/>
-				<label for="speed2">Speed of launch (m/s)</label>
-        			<input type="range" id="speed2" min="0" value="22" max="22" step="0.01" onchange='updateAngles("speedInput2",this.value)';>
-        			</input>
-        			<br/>
-        			<input type="number" id="speedInput2" max="22" min = "0" maxlength="5" Value ="" onchange='updateAngles("speed2",this.value)';>
-                		</input>
-                		<br/><br/>
-				<label for="height2" maxlength="6" min="0">Launch height (m)</label> 
-                		<input type="number"> 
-                		</input>
-                		<br/><br/>
-				<label for="bounceMax2">Maximum number of bounces</label><br/>
-                		<select id="bounceMax2" name="bounceMax2">
-                    			<option value="0">0</option>
-                    			<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					
-                		</select>
+					<br/>
+					<br/>
 
-                		<br/><br/>
-                		<label for="bounce2">Bounce collision efficiency (%)</label><br>
-                		<input type="range" id="bounce2" min="0" value="0.50" max="1" step="0.01">
-				</input>
-		
-				<br/><br/>
-			</div>
+					<label for="bounce">Bounce collision efficiency (%) </label>
+					<br>
+					<input type="range" id="efficiency1" min="0" value="0.50" max="1" step="0.01" oninput='syncVariables()'; onchange='syncVariables();'>
+					</input>
+				</div>
 
-               
-				               
-                
-				
-					
-	
-			
-		
-        	</form>
-    	</div>
+				<div class="panel" style="background-color: white;">
+					<label for="compare">Compare trajectories</label>
+					<br/>
+					<input type="checkbox" checked="false" id="compare" name="compare" onclick="showMe('div1', this)">
+				</div>
 
-</div>
-  
-<script src="app.js"></script>
+				<div id="div1" class="panel" style="border-right-color: rgb(170, 170, 170); border-right-width: 1px; border-right-style: solid; background-color: white; display: none;">
+					<label for="angle">Angle of launch (°)</label>
+					<input type="range" id="angleRange2" min="0" value="45" max="90" step="0.01" oninput='updateValues("angleNumber2",this.value)' onchange='updateValues("angleNumber2",this.value)' ;>
+					</input>
+					<br/>
+					<input type="number" id="angleNumber2" max="90" min="0" maxlength="5" value="45" oninput='updateValues("angleRange2",this.value)' onchange='updateValues("angleRange2",this.value)' ;>
+					<br/>
+					<br/>
+					<label for="speed">Speed of launch (m/s)</label>
+					<input type="range" id="speedRange2" min="0" value="15" max="30" step="0.01" oninput='updateValues("speedNumber2",this.value)' onchange='updateValues("speedNumber2",this.value)' ;>
+					</input>
+					<br/>
+					<input type="number" id="speedNumber2" max="30" min="0" maxlength="5" value="15" oninput='updateValues("speedRange2",this.value)' onchange='updateValues("speedRange2",this.value)' ;>
+					</input>
+					<br/>
+					<br/>
+					<label for="height" maxlength="6" min="0">Launch height (m)</label>
+					<input type="number" id="heightNumber2" min="0" Value="0" oninput='syncVariables()'; onchange='syncVariables();'>
+					</input>
+					<br/>
+					<br/>
+					<label for="bounceMax">Maximum number of bounces</label>
+					<br/>
+					<select id="bounceMax2" value="0" name="bounceMax" oninput='syncVariables()'; onchange='syncVariables();'>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+					</select>
+
+					<br/>
+					<br/>
+
+					<label for="bounce">Bounce collision efficiency (%) </label>
+					<br>
+					<input type="range" id="efficiency2" min="0" value="0.50" max="1" step="0.01" oninput='syncVariables()'; onchange='syncVariables();'>
+					</input>
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+	<script src="app.js"></script>
 </body>
+
 </html>
