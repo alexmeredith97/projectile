@@ -1,203 +1,214 @@
-var a ;
-var u ;
-var g = 9.8;
-var aa ;
-var uu ;
-var gg = 9.8;
+var angle1 = 45 / 180 * Math.PI;
+var velocity1 = 20;
+var gravity1 = -9.8;
+var height1 = 10;
+var bounces1 = 0;
+var efficiency1 = 0.5;
 
-function updateAngles(ThingToChange,val){
-      document.getElementById(ThingToChange).value = val; 
-      a = ( document.getElementById("angle").value / 180 ) * Math.PI;
-      aa = ( document.getElementById("angle2").value / 180 ) * Math.PI;
-      u = ( document.getElementById("speed").value);
-      uu = ( document.getElementById("speed2").value);
-      Draw();
-      if(document.getElementById("compare").checked){
-         Draw2();   
-      }
+var angle2 = 45 / 180 * Math.PI;
+var velocity2 = 20;
+var gravity2 = -9.8;
+var height2 = 0;
+var bounces2 = 0;
+var efficiency2 = 0.5;
+
+
+var display = new Graph();
+
+
+function updateValues(ThingToChange, val) {
+	document.getElementById(ThingToChange).value = val;
+	syncVariables();
 }
 
-    
-function Graph(config) {
-        // user defined properties
-        this.canvas = document.getElementById(config.canvasId);
-        this.minX = config.minX;
-        this.minY = config.minY;
-        this.maxX = config.maxX;
-        this.maxY = config.maxY;
-        this.unitsPerTick = config.unitsPerTick;
+function syncVariables() {
+	angle1 = (document.getElementById("angleNumber1").value / 180) * Math.PI;
+	velocity1 = document.getElementById("speedNumber1").value;
+	gravity1 = -9.8;
+	height1 = document.getElementById("heightNumber1").value;
+	bounces1 = document.getElementById("bounceMax1").value;
+	efficiency1 = document.getElementById("efficiency1").value;
 
-        // constants
-        this.axisColor = '#aaa';
-        this.font = '8pt Calibri';
-        this.tickSize = 20;
-
-        // relationships
-        this.context = this.canvas.getContext('2d');
-        this.rangeX = this.maxX - this.minX;
-        this.rangeY = this.maxY - this.minY;
-        this.unitX = this.canvas.width / this.rangeX;
-        this.unitY = this.canvas.height / this.rangeY;
-        this.centerY = Math.round(Math.abs(this.minY / this.rangeY) * this.canvas.height);
-        this.centerX = Math.round(Math.abs(this.minX / this.rangeX) * this.canvas.width);
-        this.iteration = (this.maxX - this.minX) / 1000;
-        this.scaleX = this.canvas.width / this.rangeX;
-        this.scaleY = this.canvas.height / this.rangeY;
-
-        // draw x and y axis
-        this.drawXAxis();
-        this.drawYAxis();
-      }
-
-      Graph.prototype.drawXAxis = function() {
-        var context = this.context;
-        context.save();
-        context.beginPath();
-        context.moveTo(0, this.centerY);
-        context.lineTo(this.canvas.width, this.centerY);
-        context.strokeStyle = this.axisColor;
-        context.lineWidth = 1;
-        context.stroke();
-
-        // draw tick marks
-        var xPosIncrement = this.unitsPerTick * this.unitX;
-        var xPos, unit;
-        context.font = this.font;
-        context.textAlign = 'center';
-        context.textBaseline = 'top';
-
-        // draw left tick marks
-        xPos = this.centerX - xPosIncrement;
-        unit = -1 * this.unitsPerTick;
-        while(xPos > 0) {
-          context.moveTo(xPos, this.centerY - this.tickSize / 2);
-          context.lineTo(xPos, this.centerY + this.tickSize / 2);
-          context.stroke();
-          context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 30);
-          unit -= this.unitsPerTick;
-          xPos = Math.round(xPos - xPosIncrement);
-        }
-
-        // draw right tick marks
-        xPos = this.centerX + xPosIncrement;
-        unit = this.unitsPerTick;
-        while(xPos < this.canvas.width) {
-          context.moveTo(xPos, this.centerY - this.tickSize / 2);
-          context.lineTo(xPos, this.centerY + this.tickSize / 2);
-          context.stroke();
-          context.fillText(unit, xPos, this.centerY + this.tickSize / 2 - 30);
-          unit += this.unitsPerTick;
-          xPos = Math.round(xPos + xPosIncrement);
-        }
-        context.restore();
-      };
-
-      Graph.prototype.drawYAxis = function() {
-        var context = this.context;
-        context.save();
-        context.beginPath();
-        context.moveTo(this.centerX, 0);
-        context.lineTo(this.centerX, this.canvas.height);
-        context.strokeStyle = this.axisColor;
-        context.lineWidth = 1;
-        context.stroke();
-
-        // draw tick marks
-        var yPosIncrement = this.unitsPerTick * this.unitY;
-        var yPos, unit;
-        context.font = this.font;
-        context.textAlign = 'right';
-        context.textBaseline = 'middle';
-
-        // draw top tick marks
-        yPos = this.centerY - yPosIncrement;
-        unit = this.unitsPerTick;
-        while(yPos > 0) {
-          context.moveTo(this.centerX - this.tickSize / 2, yPos);
-          context.lineTo(this.centerX + this.tickSize / 2, yPos);
-          context.stroke();
-          context.fillText(unit, this.centerX - this.tickSize / 2 + 30, yPos);
-          unit += this.unitsPerTick;
-          yPos = Math.round(yPos - yPosIncrement);
-        }
-
-        // draw bottom tick marks
-        yPos = this.centerY + yPosIncrement;
-        unit = -1 * this.unitsPerTick;
-        while(yPos < this.canvas.height) {
-          context.moveTo(this.centerX - this.tickSize / 2, yPos);
-          context.lineTo(this.centerX + this.tickSize / 2, yPos);
-          context.stroke();
-          context.fillText(unit, this.centerX - this.tickSize / 2 + 30, yPos);
-          unit -= this.unitsPerTick;
-          yPos = Math.round(yPos + yPosIncrement);
-        }
-        context.restore();
-      };
-
-      Graph.prototype.drawEquation = function(equation, color, thickness) {
-        var context = this.context;
-        context.save();
-        context.save();
-        this.transformContext();
-
-        context.beginPath();
-        context.moveTo(this.minX, equation(this.minX));
-
-        for(var x = this.minX + this.iteration; x <= this.maxX; x += this.iteration) {
-          context.lineTo(x, equation(x));
-        }
-
-        context.restore();
-        context.lineJoin = 'round';
-        context.lineWidth = thickness;
-        context.strokeStyle = color;
-        context.stroke();
-        context.restore();
-      };
-
-      Graph.prototype.transformContext = function() {
-        var context = this.context;
-
-        // move context to center of canvas
-        this.context.translate(this.centerX, this.centerY);
-
-        /*
-         * stretch grid to fit the canvas window, and
-         * invert the y scale so that that increments
-         * as you move upwards
-         */
-        context.scale(this.scaleX, -this.scaleY);
-      };
-      Graph.prototype.clearCanvas = function(){
-            //this.canvas = document.getElementById("myCanvas");
-            //var context = this.context;
-            //context.clearRect(0, 0, canvas.width, canvas.height);
-      };
-      var myGraph = new Graph({
-        canvasId: 'myCanvas',
-        minX: -0,
-        minY: -20,
-        maxX: 20,
-        maxY: 0,
-        unitsPerTick: 1
-      });
-      
-function showMe (it, box) {
-  var vis = (box.checked) ? "block" : "none";
-  document.getElementById(it).style.display = vis;
-}
-function Draw(){
- myGraph.drawEquation(function(x) {
-          return  ((x*Math.tan(a)) - (g*x*x)/(2*u*u*Math.cos(a)*Math.cos(a)));
-      }, 'green', 3);
-}
-function Draw2(){
-      myGraph.drawEquation(function(x) {
-          return  ((x*Math.tan(aa)) - (gg*x*x)/(2*uu*uu*Math.cos(aa)*Math.cos(aa)));
-      }, 'purple', 3);
-}
-function Clear(){
-      Graph.prototype.clearCanvas();
+	angle2 = (document.getElementById("angleNumber2").value / 180) * Math.PI;
+	velocity2 = document.getElementById("speedNumber2").value;
+	gravity2 = -9.8;
+	height2 = document.getElementById("heightNumber2").value;
+	bounces2 = document.getElementById("bounceMax2").value;
+	efficiency2 = document.getElementById("efficiency2").value;
+	graph.animating = false;
+	display.reDraw()
 }
 
+function Graph() {
+	this.canvas = document.getElementById("graph")
+	this.ctx = this.canvas.getContext('2d');
+
+	this.pixelsPerMeter = 20;
+	this.metersPerTick = 5;
+	this.tickThingy = 1;
+	this.timeStep = 1/60;
+	this.time = 0;
+	this.dotSeperation = 1;
+	this.animating = false;
+
+	this.xSeries1 = [];
+	this.xSeries2 = [];
+	this.ySeries1 = [];
+	this.ySeries2 = [];
+
+	this.colour1 = "green";
+	this.colour2 = "purple";
+	
+	this.animindex = 0;
+	this.prevFrameStartTime = 0;
+}
+
+Graph.prototype.reScale = function() {
+	var xMax = Math.max(this.xSeries1[this.xSeries1.length - 1], this.xSeries2[this.xSeries2.length - 1])
+	var yMax = Math.max((-velocity1 * Math.sin(angle1) * velocity1 * Math.sin(angle1)) / (2 * gravity1) + parseInt(height1), (-velocity2 * Math.sin(angle2) * velocity2 * Math.sin(angle2)) / (2 * gravity2) + parseInt(height2));
+	this.pixelsPerMeter = Math.min(this.canvas.width / xMax, this.canvas.height / yMax)
+	this.tickThingy = 1;
+}
+
+Graph.prototype.reDraw = function() {
+	this.clearDisplay();
+	this.updateSeries();
+	this.reScale();
+	this.drawSeries(this.xSeries1, this.ySeries1, this.colour1);
+	this.drawSeries(this.xSeries2, this.ySeries2, this.colour2);
+	this.drawAxis();
+}
+
+Graph.prototype.drawAxis = function() {
+	this.ctx.lineWidth = 1;
+	this.ctx.strokeStyle = 'black';
+
+	this.ctx.beginPath();
+	this.ctx.moveTo(0, this.canvas.height);
+	this.ctx.lineTo(this.canvas.width, this.canvas.height);
+	this.ctx.stroke();
+
+	this.ctx.beginPath();
+	this.ctx.moveTo(0, 0);
+	this.ctx.lineTo(0, this.canvas.height);
+	this.ctx.stroke();
+
+	this.ctx.lineWidth = 0.2;
+	this.ctx.font = "13px courier";
+	this.ctx.textAlign = "left";
+
+	var mx = this.canvas.width / this.pixelsPerMeter;
+	var xdtarget = 10;
+	var xtspacing = Math.pow(10, Math.round(Math.log10(mx / xdtarget)));
+
+	for (var x = 0; x < this.canvas.width; x += xtspacing * this.pixelsPerMeter) {
+		this.ctx.beginPath();
+		this.ctx.moveTo(x, 0);
+		this.ctx.lineTo(x, this.canvas.height);
+		this.ctx.stroke();
+		this.ctx.fillText(Math.round(10 * x / this.pixelsPerMeter) / 10, x + 3, this.canvas.height - 4);
+	}
+	
+	var my = this.canvas.height / this.pixelsPerMeter;
+	var ydtarget = 10;
+	var ytspacing = Math.pow(10, Math.round(Math.log10(my / ydtarget)));
+
+	for (var y = this.canvas.height; y >= 0; y -= ytspacing * this.pixelsPerMeter) {
+		this.ctx.beginPath();
+		this.ctx.moveTo(0, y);
+		this.ctx.lineTo(this.canvas.width, y);
+		this.ctx.stroke();
+		this.ctx.fillText(Math.round((this.canvas.height-y)/this.pixelsPerMeter), 3, y - 4);
+	}
+};
+
+Graph.prototype.clearDisplay = function() {
+	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+}
+
+Graph.prototype.updateSeries = function() {
+	this.xSeries1 = []
+	this.ySeries1 = []
+	this.xSeries2 = []
+	this.ySeries2 = []
+
+	offset = 0;
+	x = 0;
+	for (b = 0; b <= bounces1; b++) {
+		y = 0
+		for (t = 0; y >= 0; t = t + this.timeStep) {
+			x = t * velocity1 * Math.cos(angle1) + offset;
+			y = t * velocity1 * Math.sin(angle1) * Math.pow(efficiency1, b) + 0.5 * gravity1 * t * t + parseInt(height1);
+			this.xSeries1.push(x);
+			this.ySeries1.push(y);
+		}
+		offset = x;
+		height1 = 0;
+	}
+
+	offset = 0;
+	x = 0;
+	for (b = 0; b <= bounces2; b++) {
+		y = 0
+		for (t = 0; y >= 0; t = t + this.timeStep) {
+			x = t * velocity2 * Math.cos(angle2) + offset;
+			y = t * velocity2 * Math.sin(angle2) * Math.pow(efficiency2, b) + 0.5 * gravity2 * t * t + parseInt(height2);
+			this.xSeries2.push(x);
+			this.ySeries2.push(y);
+		}
+		offset = x;
+		height2 = 0;
+	}
+
+	height1 = document.getElementById("heightNumber1").value;
+	height2 = document.getElementById("heightNumber2").value;
+}
+
+Graph.prototype.drawSeries = function(seriesX, seriesY, colour) {
+	this.ctx.lineWidth = 1;
+	this.ctx.strokeStyle = colour;
+
+	this.ctx.beginPath();
+	this.ctx.moveTo(0, this.canvas.height);
+	for (i = 0; i <= seriesX.length; i++) {
+		this.ctx.lineTo(seriesX[i] * this.pixelsPerMeter, this.canvas.height - seriesY[i] * this.pixelsPerMeter);
+	}
+	this.ctx.stroke();
+}
+
+Graph.prototype.startAnimating1 = function() {
+	this.firstAnimCall = true;
+	window.requestAnimationFrame(this.animateProjectile.bind(this))
+}
+
+Graph.prototype.animateProjectile = function(time) {
+	if (this.firstAnimCall === true) {
+		this.startTime = time;
+		this.firstAnimCall = false
+	}
+	
+	var t = (time - this.startTime)/1000;
+	var slice = (t/this.timeStep) >> 0;
+	
+	this.clearDisplay();
+	this.updateSeries();
+	this.reScale();
+	this.drawSeries(this.xSeries1, this.ySeries1, this.colour1);
+	this.drawSeries(this.xSeries2, this.ySeries2, this.colour2);
+	this.drawAxis();
+	
+	this.ctx.beginPath();
+	this.ctx.arc(this.xSeries1[slice]*this.pixelsPerMeter, this.canvas.height-this.ySeries1[slice]*this.pixelsPerMeter, 10, 0, Math.PI*2, true); 
+	this.ctx.closePath();
+	this.ctx.fill();
+		
+	window.requestAnimationFrame(this.animateProjectile.bind(this))
+};
+
+function showMe(it, box) {
+	var vis = (box.checked) ? "block" : "none";
+	document.getElementById(it).style.display = vis;
+}
+
+syncVariables();
+document.getElementById('div1').style.display = "block";
