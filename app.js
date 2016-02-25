@@ -1,3 +1,5 @@
+Math.log10 = function(x){return Math.log(x)*Math.LOG10E}
+
 var angle1 = 45 / 180 * Math.PI;
 var velocity1 = 20;
 var gravity1 = -9.8;
@@ -176,7 +178,39 @@ Graph.prototype.drawSeries = function(seriesX, seriesY, colour) {
 	this.ctx.stroke();
 }
 
-Graph.prototype.startAnimating1 = function() {
+Graph.prototype.drawAnimatingSeries = function(seriesX, seriesY, sliceN, colour) {
+	this.ctx.lineWidth = 1;
+	this.ctx.strokeStyle = colour;
+	
+	var st = false;
+	
+	
+	this.ctx.moveTo(0, this.canvas.height);
+	for (i = 0; i <= Math.min(sliceN, seriesX.length); i++) {
+		this.ctx.lineTo(seriesX[i] * this.pixelsPerMeter, this.canvas.height - seriesY[i] * this.pixelsPerMeter);
+		
+		if (i % 2 == 0) {
+			st = !st;
+		}
+		
+		if (st) {
+			this.ctx.beginPath();
+		} else {
+			this.ctx.stroke();
+		}
+	}
+	
+	this.ctx.stroke();
+	
+	this.ctx.beginPath();
+	this.ctx.arc(seriesX[sliceN]*this.pixelsPerMeter, this.canvas.height-seriesY[sliceN]*this.pixelsPerMeter, 5, 0, Math.PI*2, true); 
+	this.ctx.closePath();
+	this.ctx.fillStyle = colour
+	this.ctx.fill();
+	this.ctx.fillStyle = 'black'
+}
+
+Graph.prototype.startAnimating = function() {
 	this.firstAnimCall = true;
 	window.requestAnimationFrame(this.animateProjectile.bind(this))
 }
@@ -189,24 +223,29 @@ Graph.prototype.animateProjectile = function(time) {
 	
 	var t = (time - this.startTime)/1000;
 	var slice = (t/this.timeStep) >> 0;
-	
+
 	this.clearDisplay();
 	this.updateSeries();
 	this.reScale();
-	this.drawSeries(this.xSeries1, this.ySeries1, this.colour1);
-	this.drawSeries(this.xSeries2, this.ySeries2, this.colour2);
 	this.drawAxis();
+	//this.drawSeries(this.xSeries1, this.ySeries1, this.colour1);
+	//this.drawSeries(this.xSeries2, this.ySeries2, this.colour2);
+	this.drawAnimatingSeries(this.xSeries1, this.ySeries1, slice, this.colour1)
+	this.drawAnimatingSeries(this.xSeries2, this.ySeries2, slice, this.colour2)
 	
-	this.ctx.beginPath();
-	this.ctx.arc(this.xSeries1[slice]*this.pixelsPerMeter, this.canvas.height-this.ySeries1[slice]*this.pixelsPerMeter, 10, 0, Math.PI*2, true); 
-	this.ctx.closePath();
-	this.ctx.fill();
-		
-	window.requestAnimationFrame(this.animateProjectile.bind(this))
+	if (slice < Math.max(this.xSeries1.length, this.xSeries2.length)) {
+		window.requestAnimationFrame(this.animateProjectile.bind(this))
+	} else {
+		this.reDraw()
+	}
+	
 };
 
 function showMe(it, box) {
 	var vis = (box.checked) ? "block" : "none";
+	var col = (box.checked) ? "purple" : "rgba(0,0,0,0)";
+	display.colour2 = col;
+	display.reDraw();
 	document.getElementById(it).style.display = vis;
 }
 
