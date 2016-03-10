@@ -241,7 +241,7 @@ Graph.prototype.animateProjectile = function(time) {
 	
 };
 
-function showMe(it, box) {
+function show(it, box) {
 	var vis = (box.checked) ? "block" : "none";
 	var col = (box.checked) ? "purple" : "rgba(0,0,0,0)";
 	display.colour2 = col;
