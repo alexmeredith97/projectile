@@ -38,6 +38,10 @@
 					</input>
 					<br/>
 					<br/>
+					<label for ="gravity" maxlength="6" min = "0.1" > Gravitational Acceleration </label>
+					<input type ="number"  id="gravity1" min = "0.1" maxlength="6" oninput='syncVariables();' onchange='syncVariables();'> 
+					<br/>
+					<br/>
 					<label for="bounceMax">Maximum number of bounces</label>
 					<br/>
 					<select id="bounceMax1" name="bounceMax" value="0" oninput='syncVariables();' onchange='syncVariables();'>
@@ -64,11 +68,11 @@
 				<div class="panel" style="background-color: white;">
 					<label for="compare">Compare trajectories</label>
 					<br/>
-					<input type="checkbox" checked="false" id="compare" name="compare" onclick="showMe('div1', this)">
+					<input type="checkbox" checked="false" id="compare" name="compare" onclick="show('div1', this)">
 					<br/>
 					<label for="start">Start animation</label>
 					<br/>
-					<input type="button" value="Start animating" onclick="display.startAnimating()">
+					<input type="button" value="Launch" onclick="display.startAnimating()">
 				</div>
 
 				<div id="div1" class="panel" style="border-right-color: rgb(170, 170, 170); border-right-width: 1px; border-right-style: solid; background-color: white; display: none;">
@@ -90,6 +94,10 @@
 					<label for="height" maxlength="6" min="0" value = "0" >Launch height (m)</label>
 					<input type="number" id="heightNumber2" min="0" Value="0" oninput='syncVariables()'; onchange='syncVariables();'>
 					</input>
+					<br/>
+					<br/>
+					<label for ="gravity" maxlength="6" min = "0.1" > Gravitational Acceleration </label>
+					<input type ="number"  id="gravity1" min = "0.1" maxlength="6" oninput='syncVariables();' onchange='syncVariables();'> 
 					<br/>
 					<br/>
 					<label for="bounceMax">Maximum number of bounces</label>
