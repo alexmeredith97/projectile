@@ -6,6 +6,7 @@ var gravity1 = -9.8;
 var height1 = 10;
 var bounces1 = 0;
 var efficiency1 = 0.5;
+var gravity1 = 9.8;
 
 var angle2 = 45 / 180 * Math.PI;
 var velocity2 = 20;
@@ -13,6 +14,7 @@ var gravity2 = -9.8;
 var height2 = 0;
 var bounces2 = 0;
 var efficiency2 = 0.5;
+var gravity2 = 9.8;
 
 
 var display = new Graph();
@@ -26,17 +28,19 @@ function updateValues(ThingToChange, val) {
 function syncVariables() {
 	angle1 = (document.getElementById("angleNumber1").value / 180) * Math.PI;
 	velocity1 = document.getElementById("speedNumber1").value;
-	gravity1 = -9.8;
+	//gravity1 = -9.8;
 	height1 = document.getElementById("heightNumber1").value;
 	bounces1 = document.getElementById("bounceMax1").value;
 	efficiency1 = document.getElementById("efficiency1").value;
+	gravity1 = (document.getElementById("gravityValue1").value * -1);
 
 	angle2 = (document.getElementById("angleNumber2").value / 180) * Math.PI;
 	velocity2 = document.getElementById("speedNumber2").value;
-	gravity2 = -9.8;
+	//gravity2 = -9.8;
 	height2 = document.getElementById("heightNumber2").value;
 	bounces2 = document.getElementById("bounceMax2").value;
 	efficiency2 = document.getElementById("efficiency2").value;
+	gravity2 = (document.getElementById("gravityValue2").value * -1);
 	graph.animating = false;
 	display.reDraw()
 }
