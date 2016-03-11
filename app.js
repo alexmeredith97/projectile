@@ -1,4 +1,4 @@
-Math.log10 = function(x){return Math.log(x)*Math.LOG10E}
+Math.log10 = function(x){return Math.log(x)*Math.LOG10E} //Allows use of Math.log in internet explorer by creating it as a new function
 
 var angle1 = 45 / 180 * Math.PI;
 var velocity1 = 20;
@@ -28,15 +28,19 @@ function updateValues(ThingToChange, val) {
 function syncVariables() {
 	angle1 = (document.getElementById("angleNumber1").value / 180) * Math.PI;
 	velocity1 = document.getElementById("speedNumber1").value;
-	//gravity1 = -9.8;
 	height1 = document.getElementById("heightNumber1").value;
 	bounces1 = document.getElementById("bounceMax1").value;
 	efficiency1 = document.getElementById("efficiency1").value;
 	gravity1 = (document.getElementById("gravityValue1").value * -1);
+	if (document.getElementById("compare").checked) {
+		angle2 = (document.getElementById("angleNumber2").value / 180) * Math.PI;
+		
+	}
+		else{ angle2 = 0
+		}
 
-	angle2 = (document.getElementById("angleNumber2").value / 180) * Math.PI;
+	
 	velocity2 = document.getElementById("speedNumber2").value;
-	//gravity2 = -9.8;
 	height2 = document.getElementById("heightNumber2").value;
 	bounces2 = document.getElementById("bounceMax2").value;
 	efficiency2 = document.getElementById("efficiency2").value;
@@ -251,6 +255,8 @@ function show(it, box) {
 	display.colour2 = col;
 	display.reDraw();
 	document.getElementById(it).style.display = vis;
+	syncVariables();
+	
 }
 
 syncVariables();
