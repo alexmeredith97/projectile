@@ -67,7 +67,7 @@ function Graph() {
 	// defines values relating distance, pixels and time to make sure that the simulation is output to the screen accurately
 	this.pixelsPerMeter = 20;
 	this.metersPerTick = 5;
-	this.tickThingy = 1;
+	this.tick = 1;
 	this.timeStep = 1/60;
 	this.time = 0;
 	this.dotSeperation = 1;
@@ -89,7 +89,7 @@ Graph.prototype.reScale = function() {
 	var xMax = Math.max(this.xSeries1[this.xSeries1.length - 1], this.xSeries2[this.xSeries2.length - 1])
 	var yMax = Math.max((-velocity1 * Math.sin(angle1) * velocity1 * Math.sin(angle1)) / (2 * gravity1) + parseInt(height1), (-velocity2 * Math.sin(angle2) * velocity2 * Math.sin(angle2)) / (2 * gravity2) + parseInt(height2));
 	this.pixelsPerMeter = Math.min(this.canvas.width / xMax, this.canvas.height / yMax)
-	this.tickThingy = 1;
+	this.tick = 1;
 }
 
 Graph.prototype.reDraw = function() {
