@@ -1,30 +1,42 @@
-Math.log10 = function(x){return Math.log(x)*Math.LOG10E} //Allows use of Math.log in internet explorer by creating it as a new function
-
+//Allows use of Math.log in internet explorer by creating it as a new function
+Math.log10 = function(x){return Math.log(x)*Math.LOG10E} 
+// sets angle of projectile 1 to 45 degrees. divides by Math.PI to get convert to degrees (default it radians)
 var angle1 = 45 / 180 * Math.PI;
+// sets initial velocity of projectile 1 to 20 (m/s)
 var velocity1 = 20;
-var gravity1 = -9.8;
-var height1 = 10;
-var bounces1 = 0;
-var efficiency1 = 0.5;
+// gets gravity for projectile 1 to 9.8 (m/s/s)
 var gravity1 = 9.8;
+// sets launch height off ground for projectile 1 to 0 metres
+var height1 = 0;
+// sets maximum number of bounces for projectile 1 to 0 metres
+var bounces1 = 0;
+// sets bounce collision efficiency of projectile 1 to 0.5 (50%)
+var efficiency1 = 0.5;
 
+// sets angle of projectile 2 to 45 degrees. divides by Math.PI to get convert to degrees (default it radians)
 var angle2 = 45 / 180 * Math.PI;
-var velocity2 = 20;
-var gravity2 = -9.8;
-var height2 = 0;
-var bounces2 = 0;
-var efficiency2 = 0.5;
+// sets initial velocity of projectile 2 to 15 (m/s)
+var velocity2 = 15;
+// gets gravity for projectile 2 to 9.8 (m/s/s)
 var gravity2 = 9.8;
+// sets launch height off ground for projectile 2 to 0 metres
+var height2 = 0;
+// sets maximum number of bounces for projectile 2 to 0 metres
+var bounces2 = 0;
+// sets bounce collision efficiency of projectile 2 to 0.5 (50%)
+var efficiency2 = 0.5;
 
+// creates new Graph object called display to be recalled later when re-drawing graphs
+var display = new Graph(); 
 
-var display = new Graph();
-
-
+// creates a function that updates values between sliders and textboxes to synchronise them when the other gets edited
 function updateValues(ThingToChange, val) {
 	document.getElementById(ThingToChange).value = val;
 	syncVariables();
 }
 
+// creates function to synchronise variables by getting their values from the HTML code 
+// called after UpdateValues to make sure that the variables update to the new values, not just the visual display on the textbexes and sliders
 function syncVariables() {
 	angle1 = (document.getElementById("angleNumber1").value / 180) * Math.PI;
 	velocity1 = document.getElementById("speedNumber1").value;
@@ -32,6 +44,7 @@ function syncVariables() {
 	bounces1 = document.getElementById("bounceMax1").value;
 	efficiency1 = document.getElementById("efficiency1").value;
 	gravity1 = (document.getElementById("gravityValue1").value * -1);
+	// if user selects to only use 1 projectile, the angle of projectile 2 is set to 0 to hide it from screen
 	if (document.getElementById("compare").checked) {
 		angle2 = (document.getElementById("angleNumber2").value / 180) * Math.PI;
 		
@@ -39,7 +52,6 @@ function syncVariables() {
 		else{ angle2 = 0
 		}
 
-	
 	velocity2 = document.getElementById("speedNumber2").value;
 	height2 = document.getElementById("heightNumber2").value;
 	bounces2 = document.getElementById("bounceMax2").value;
@@ -52,7 +64,7 @@ function syncVariables() {
 function Graph() {
 	this.canvas = document.getElementById("graph")
 	this.ctx = this.canvas.getContext('2d');
-
+	// defines values relating distance, pixels and time to make sure that the simulation is output to the screen accurately
 	this.pixelsPerMeter = 20;
 	this.metersPerTick = 5;
 	this.tickThingy = 1;
@@ -60,7 +72,7 @@ function Graph() {
 	this.time = 0;
 	this.dotSeperation = 1;
 	this.animating = false;
-
+	// arrays storing X and Y co-ordinates differing with timestep (1/60)
 	this.xSeries1 = [];
 	this.xSeries2 = [];
 	this.ySeries1 = [];
@@ -135,13 +147,17 @@ Graph.prototype.drawAxis = function() {
 Graph.prototype.clearDisplay = function() {
 	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 }
-
+// creates the X and Y series
+// splits the y=xtana−gx²/(2u²×cos²a) equation into X and Y components, setting up parametric equations
 Graph.prototype.updateSeries = function() {
 	this.xSeries1 = []
 	this.ySeries1 = []
 	this.xSeries2 = []
 	this.ySeries2 = []
-
+        // t = time
+        // x = X coordinate
+        // y = Y coordinate
+        // b = bounce
 	offset = 0;
 	x = 0;
 	for (b = 0; b <= bounces1; b++) {
@@ -173,7 +189,7 @@ Graph.prototype.updateSeries = function() {
 	height1 = document.getElementById("heightNumber1").value;
 	height2 = document.getElementById("heightNumber2").value;
 }
-
+// draws the graphs from the X and Y series' and colour
 Graph.prototype.drawSeries = function(seriesX, seriesY, colour) {
 	this.ctx.lineWidth = 1;
 	this.ctx.strokeStyle = colour;
