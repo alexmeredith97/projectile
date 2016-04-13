@@ -39,12 +39,14 @@
 					<br/>
 					<br/>
 					<label for ="gravity"  > Gravitational Acceleration </label>
-					<select id="gravityMenu1" name="gravityMenu" value="0" oninput='syncVariables();' onchange='syncVariables();'>
-						<option value="0">Moon - 1.62</option>
-						<option value="0">Mars - 3.71</option>
-						<option value="0">Jupiter - 24.79</option>
+					<select id="gravityMenu1" name="gravityMenu" value="0" oninput='syncVariables();' onchange='syncVariables();' oninput='updateValues("gravityValue1",this.value)' onchange='updateValues("gravityValue1",this.value)'>
+						<option value="9.8">Earth - 9.8</option>
+						<option value="1.62">Moon - 1.62</option>
+						<option value="3.71">Mars - 3.71</option>
+						<option value="24.79">Jupiter - 24.79</option>
 					</select>
-					<input type ="number"  id="gravityValue1" min = "0.1" maxlength="6" value ="9.8" oninput='syncVariables();' onchange='syncVariables();'> 
+					<br/>
+					<input type ="number"  id="gravityValue1" min = "0.1" maxlength="6" value ="9.8" oninput='syncVariables();' onchange='syncVariables();'> <input type ="button" value ="Add"> 
 					<br/>
 					<br/>
 					<label for="bounceMax">Maximum number of bounces</label>
