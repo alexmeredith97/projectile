@@ -39,6 +39,10 @@
 					<br/>
 					<br/>
 					<label for ="gravity"  > Gravitational Acceleration </label>
+					<select id="gravityMenu1" name="gravityMenu" value="0" oninput='syncVariables();' onchange='syncVariables();'>
+						<option value="0">Moon - 1.62</option>
+						<option value="0">Mars - 3.71</option>
+						<option value="0">Jupiter - 24.79</option>
 					<input type ="number"  id="gravityValue1" min = "0.1" maxlength="6" value ="9.8" oninput='syncVariables();' onchange='syncVariables();'> 
 					<br/>
 					<br/>
