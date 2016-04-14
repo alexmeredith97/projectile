@@ -20,9 +20,10 @@
 				<div class="panel" style="background-color: white;">
 					<label for ='xDisplacement1'>X Displacement (m)</label><input type='number' id = 'xDisplacement1' value ='0'>
 					<br/>
-					<label for ='yDisplacement1'>X Displacement (m)</label><input type='number' id = 'yDisplacement1' value ='0'>
+					<label for ='yDisplacement1'>Y Displacement (m)</label><input type='number' id = 'yDisplacement1' value ='0'>
 					<br/>
 					<p1>--------------------------</p1>
+					<br/>
 					<label for="angle">Angle of launch (°)</label>
 					<input type="range" id="angleRange1" min="0" value="45" max="90" step="0.01" oninput='updateValues("angleNumber1",this.value)' onchange='updateValues("angleNumber1",this.value)' ;>
 					</input>
@@ -103,10 +104,11 @@
 				<div id="div1" class="panel" style="border-right-color: rgb(170, 170, 170); border-right-width: 1px; border-right-style: solid; background-color: white; display: none;">
 					<label for ='xDisplacement2'>X Displacement (m)</label><input type='number' id = 'xDisplacement2' value ='0'>
 					<br/>
-					<label for ='yDisplacement2'>X Displacement (m)</label><input type='number' id = 'yDisplacement2' value ='0'>
+					<label for ='yDisplacement2'>Y Displacement (m)</label><input type='number' id = 'yDisplacement2' value ='0'>
+					<br/>
+					<p1>--------------------------</p1>
 					<br/>
 					<label for="angle">Angle of launch (°)</label>
-					<p1>--------------------------</p1>
 					<input type="range" id="angleRange2" min="0" value="45" max="90" step="0.01" oninput='updateValues("angleNumber2",this.value)' onchange='updateValues("angleNumber2",this.value)' ;>
 					</input>
 					<br/>
