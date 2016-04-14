@@ -164,7 +164,7 @@ Graph.prototype.updateSeries = function() {
         // b = bounce
 	offset = 0;
 	x = 0;
-	for (b = 0; b <= bounces1; b++) {
+	for (b = 0; b <= setup.bounces1; b++) {
 		y = 0
 		for (t = 0; y >= 0; t = t + this.timeStep) {
 			x = t * setup.velocity1 * Math.cos(setup.angle1) + offset;
