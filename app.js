@@ -31,7 +31,7 @@ function saveToSimulations(name) {
 
 function loadSimulations() {
   simulations = JSON.parse(localStorage.getItem('simulations'));
-  if(simualtions.length != null){
+  if(simulations.length != null){
     for(var i = 0; i < simulations.length; ++i){
       console.log(simulations);
     }
