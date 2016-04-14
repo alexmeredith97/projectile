@@ -29,16 +29,9 @@ function saveToSimulations(name) {
   localStorage.setItem('simulations', JSON.stringify(simulations));
 }
 
-function loadSimulations() {
+function loadSimulation(name) {
   simulations = JSON.parse(localStorage.getItem('simulations'));
-  if(simulations != null & simulations != undefined){
-    for(var i = 0; i < simulations.length; ++i){
-      console.log(simulations);
-    }
-  } else {
-    //save default setups here maybe?
-  }
-  
+  setup = simulations[name];
 }
 
 // creates new Graph object called display to be recalled later when re-drawing graphs
