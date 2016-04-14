@@ -80,8 +80,16 @@
 					<br/>
 					<br/>
 					<input type="button" value="Launch" onclick="display.startAnimating()">
-					<br/><br/><br/><br/><br/><br/>
-					<input type="button" value="Learn" onClick = window.open("http://alexmeredith97.github.io/Learn/")>
+					<br/><br/><br/><br/><br/>
+					<label for ='savedSimulations'>Select a Previously Saved Simulation </label>
+					<select id="savedSimulations" name="savedSimulations" value="0">
+						<option value="9.8">Year 9 25/4/16 lesson</option>
+						<option value="9.8">Test Simulation 1</option>
+						<option value="9.8">Mr Barsby Test</option>
+					</select>
+					<br/><br/><br/><br/><br/>
+					<label for='saveName'>Enter a name for your simulation and save it for later use</label>
+					<input type ='text' id ='saveName' value ='[Enter Simulation Name]'>  <input type="button" value="Save" >
 				</div>
 
 				<div id="div1" class="panel" style="border-right-color: rgb(170, 170, 170); border-right-width: 1px; border-right-style: solid; background-color: white; display: none;">
