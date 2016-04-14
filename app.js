@@ -1,30 +1,34 @@
 //Allows use of Math.log in internet explorer by creating it as a new function
 Math.log10 = function(x){return Math.log(x)*Math.LOG10E} 
 // sets angle of projectile 1 to 45 degrees. divides by Math.PI to get convert to degrees (default it radians)
-var angle1 = 45 / 180 * Math.PI;
-// sets initial velocity of projectile 1 to 20 (m/s)
-var velocity1 = 20;
-// gets gravity for projectile 1 to 9.8 (m/s/s)
-var gravity1 = 9.8;
-// sets launch height off ground for projectile 1 to 0 metres
-var height1 = 0;
-// sets maximum number of bounces for projectile 1 to 0 metres
-var bounces1 = 0;
-// sets bounce collision efficiency of projectile 1 to 0.5 (50%)
-var efficiency1 = 0.5;
 
-// sets angle of projectile 2 to 45 degrees. divides by Math.PI to get convert to degrees (default it radians)
-var angle2 = 45 / 180 * Math.PI;
-// sets initial velocity of projectile 2 to 15 (m/s)
-var velocity2 = 15;
-// gets gravity for projectile 2 to 9.8 (m/s/s)
-var gravity2 = 9.8;
-// sets launch height off ground for projectile 2 to 0 metres
-var height2 = 0;
-// sets maximum number of bounces for projectile 2 to 0 metres
-var bounces2 = 0;
-// sets bounce collision efficiency of projectile 2 to 0.5 (50%)
-var efficiency2 = 0.5;
+setup = {angle1: 45 / 180 * Math.PI,
+velocity1: 20,
+gravity1: 9.8,
+height1: 0,
+bounces1: 0,
+efficiency1: 0.5,
+angle2: 45 / 180 * Math.PI,
+velocity2: 15,
+gravity2: 9.8,
+height2: 0,
+bounces2: 0,
+efficiency2: 0.5
+}
+
+function saveToSimulations(name) {
+  setup.time = new Date().getTime();
+  simulations = load('simulations')
+  if(simulations === null){
+    simulations = []
+  }
+  simulations[name] = setup
+  localStorage.setItem('simulations', JSON.stringify(simulations));
+}
+
+function loadSimulations() {
+  return JSON.parse(localStorage.getItem('simulations'));
+}
 
 // creates new Graph object called display to be recalled later when re-drawing graphs
 var display = new Graph(); 
@@ -38,25 +42,25 @@ function updateValues(ThingToChange, val) {
 // creates function to synchronise variables by getting their values from the HTML code 
 // called after UpdateValues to make sure that the variables update to the new values, not just the visual display on the textbexes and sliders
 function syncVariables() {
-	angle1 = (document.getElementById("angleNumber1").value / 180) * Math.PI;
-	velocity1 = document.getElementById("speedNumber1").value;
-	height1 = document.getElementById("heightNumber1").value;
-	bounces1 = document.getElementById("bounceMax1").value;
-	efficiency1 = document.getElementById("efficiency1").value;
-	gravity1 = (document.getElementById("gravityValue1").value * -1);
+	setup.angle1 = (document.getElementById("angleNumber1").value / 180) * Math.PI;
+	setup.velocity1 = document.getElementById("speedNumber1").value;
+	setup.height1 = document.getElementById("heightNumber1").value;
+	setup.bounces1 = document.getElementById("bounceMax1").value;
+	setup.efficiency1 = document.getElementById("efficiency1").value;
+	setup.gravity1 = (document.getElementById("gravityValue1").value * -1);
 	// if user selects to only use 1 projectile, the angle of projectile 2 is set to 0 to hide it from screen
 	if (document.getElementById("compare").checked) {
-		angle2 = (document.getElementById("angleNumber2").value / 180) * Math.PI;
+		setup.angle2 = (document.getElementById("angleNumber2").value / 180) * Math.PI;
 		
 	}
-		else{ angle2 = 0
+		else{ setup.angle2 = 0
 		}
 
-	velocity2 = document.getElementById("speedNumber2").value;
-	height2 = document.getElementById("heightNumber2").value;
-	bounces2 = document.getElementById("bounceMax2").value;
-	efficiency2 = document.getElementById("efficiency2").value;
-	gravity2 = (document.getElementById("gravityValue2").value * -1);
+	setup.velocity2 = document.getElementById("speedNumber2").value;
+	setup.height2 = document.getElementById("heightNumber2").value;
+	setup.bounces2 = document.getElementById("bounceMax2").value;
+	setup.efficiency2 = document.getElementById("efficiency2").value;
+	setup.gravity2 = (document.getElementById("gravityValue2").value * -1);
 	graph.animating = false;
 	display.reDraw()
 }
@@ -87,7 +91,7 @@ function Graph() {
 
 Graph.prototype.reScale = function() {
 	var xMax = Math.max(this.xSeries1[this.xSeries1.length - 1], this.xSeries2[this.xSeries2.length - 1])
-	var yMax = Math.max((-velocity1 * Math.sin(angle1) * velocity1 * Math.sin(angle1)) / (2 * gravity1) + parseInt(height1), (-velocity2 * Math.sin(angle2) * velocity2 * Math.sin(angle2)) / (2 * gravity2) + parseInt(height2));
+	var yMax = Math.max((-setup.velocity1 * Math.sin(setup.angle1) * setup.velocity1 * Math.sin(setup.angle1)) / (2 * setup.gravity1) + parseInt(setup.height1), (-setup.velocity2 * Math.sin(setup.angle2) * setup.velocity2 * Math.sin(setup.angle2)) / (2 * setup.gravity2) + parseInt(setup.height2));
 	this.pixelsPerMeter = Math.min(this.canvas.width / xMax, this.canvas.height / yMax)
 	this.tick = 1;
 }
@@ -163,8 +167,8 @@ Graph.prototype.updateSeries = function() {
 	for (b = 0; b <= bounces1; b++) {
 		y = 0
 		for (t = 0; y >= 0; t = t + this.timeStep) {
-			x = t * velocity1 * Math.cos(angle1) + offset;
-			y = t * velocity1 * Math.sin(angle1) * Math.pow(efficiency1, b) + 0.5 * gravity1 * t * t + parseInt(height1);
+			x = t * setup.velocity1 * Math.cos(setup.angle1) + offset;
+			y = t * setup.velocity1 * Math.sin(setup.angle1) * Math.pow(setup.efficiency1, b) + 0.5 * setup.gravity1 * t * t + parseInt(setup.height1);
 			this.xSeries1.push(x);
 			this.ySeries1.push(y);
 		}
@@ -174,20 +178,20 @@ Graph.prototype.updateSeries = function() {
 
 	offset = 0;
 	x = 0;
-	for (b = 0; b <= bounces2; b++) {
+	for (b = 0; b <= setup.bounces2; b++) {
 		y = 0
 		for (t = 0; y >= 0; t = t + this.timeStep) {
-			x = t * velocity2 * Math.cos(angle2) + offset;
-			y = t * velocity2 * Math.sin(angle2) * Math.pow(efficiency2, b) + 0.5 * gravity2 * t * t + parseInt(height2);
+			x = t * setup.velocity2 * Math.cos(setup.angle2) + offset;
+			y = t * setup.velocity2 * Math.sin(setup.angle2) * Math.pow(setup.efficiency2, b) + 0.5 * setup.gravity2 * t * t + parseInt(setup.height2);
 			this.xSeries2.push(x);
 			this.ySeries2.push(y);
 		}
 		offset = x;
-		height2 = 0;
+		setup.height2 = 0;
 	}
 
-	height1 = document.getElementById("heightNumber1").value;
-	height2 = document.getElementById("heightNumber2").value;
+	setup.height1 = document.getElementById("heightNumber1").value;
+	setup.height2 = document.getElementById("heightNumber2").value;
 }
 // draws the graphs from the X and Y series' and colour
 Graph.prototype.drawSeries = function(seriesX, seriesY, colour) {
