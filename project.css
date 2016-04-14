@@ -31,7 +31,7 @@ body {
 .panel {
   width: calc(100%/3 - 15px - 1px - 1px/3);
   float: left;
-  height: 360px;
+  height: 420px;
   padding-left: 15px;
   border-left: 1px solid #aaa;
 }
