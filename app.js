@@ -23,7 +23,7 @@ function saveToSimulations(name) {
   setup.time = new Date().getTime();
   simulations = loadSimulations()
   if(simulations === null || simulations === undefined){
-    simulations = []
+    simulations = {}
   }
   simulations[name] = setup
   localStorage.setItem('simulations', JSON.stringify(simulations));
