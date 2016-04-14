@@ -15,7 +15,10 @@ height2: 0,
 bounces2: 0,
 efficiency2: 0.5
 }
-
+function save(){
+  name = document.getElementById('saveName').value;
+  saveToSimulations(name)
+}
 function saveToSimulations(name) {
   setup.time = new Date().getTime();
   simulations = load('simulations')
@@ -27,7 +30,10 @@ function saveToSimulations(name) {
 }
 
 function loadSimulations() {
-  return JSON.parse(localStorage.getItem('simulations'));
+  simulations = JSON.parse(localStorage.getItem('simulations'));
+  for(var i = 0; i < simulations.length; ++i){
+    console.log(simulations);
+  }
 }
 
 // creates new Graph object called display to be recalled later when re-drawing graphs
