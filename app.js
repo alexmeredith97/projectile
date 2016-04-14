@@ -21,7 +21,7 @@ function save(){
 }
 function saveToSimulations(name) {
   setup.time = new Date().getTime();
-  simulations = load('simulations')
+  simulations = loadSimulations()
   if(simulations === null){
     simulations = []
   }
