@@ -22,7 +22,7 @@ function save(){
 function saveToSimulations(name) {
   setup.time = new Date().getTime();
   simulations = loadSimulations()
-  if(simulations === null){
+  if(simulations === null || simulations === undeifined){
     simulations = []
   }
   simulations[name] = setup
@@ -31,7 +31,7 @@ function saveToSimulations(name) {
 
 function loadSimulations() {
   simulations = JSON.parse(localStorage.getItem('simulations'));
-  if(simulations != null){
+  if(simulations != null & simulations != undeifined){
     for(var i = 0; i < simulations.length; ++i){
       console.log(simulations);
     }
