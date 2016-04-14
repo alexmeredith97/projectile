@@ -34,6 +34,10 @@ function loadSimulation(name) {
   setup = simulations[name];
 }
 
+function loadSimulations() {
+  return JSON.parse(localStorage.getItem('simulations'));
+}
+
 // creates new Graph object called display to be recalled later when re-drawing graphs
 var display = new Graph(); 
 
