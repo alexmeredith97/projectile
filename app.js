@@ -32,7 +32,7 @@ function saveToSimulations(name) {
 function loadSimulation(name) {
   simulations = JSON.parse(localStorage.getItem('simulations'));
   setup = simulations[name];
-  display.redraw();
+  display.reDraw();
 }
 
 function loadSimulations() {
