@@ -1,24 +1,40 @@
 //Allows use of Math.log in internet explorer by creating it as a new function
 Math.log10 = function(x){return Math.log(x)*Math.LOG10E} 
-// sets angle of projectile 1 to 45 degrees. divides by Math.PI to get convert to degrees (default it radians)
 
+//declares all variables and saves them to the setup object
+// sets angle of projectile 1 to 45 degrees. divides by Math.PI to get convert to degrees (default is radians)
 setup = {angle1: 45 / 180 * Math.PI,
+// sets initial velocity of projectile 1 to 20 m/s
 velocity1: 20,
+// sets gravitational accelerarion to 9.8 m/s/s for projectile 1
 gravity1: 9.8,
+// sets launch height of projectile 1 to 0m (on the ground)
 height1: 0,
+// sets max number of bounces for projectile 1 to 0 bounces
 bounces1: 0,
+// sets bounce collision efficiency to 50% for projectile 1
 efficiency1: 0.5,
+// sets angle of projectile 2 to 45 degrees. divides by Math.PI to get convert to degrees (default is radians)
 angle2: 45 / 180 * Math.PI,
+// sets initial velocity of projectile 2 to 15 m/s
 velocity2: 15,
+// sets gravitational accelerarion to 9.8 m/s/s for projectile 2
 gravity2: 9.8,
+// sets launch height of projectile 2 to 0m (on the ground)
 height2: 0,
+// sets max number of bounces for projectile 2 to 0 bounces
 bounces2: 0,
+// sets bounce collision efficiency to 50% for projectile 2
 efficiency2: 0.5
 }
+
+// allows user to save a simulation under a chosen name 
 function save(){
   name = document.getElementById('saveName').value;
   saveToSimulations(name)
 }
+
+// saves all current variable values to localstorage
 function saveToSimulations(name) {
   setup.time = new Date().getTime();
   simulations = loadSimulations()
