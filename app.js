@@ -43,6 +43,7 @@ function saveToSimulations(name) {
   }
   simulations[name] = setup
   localStorage.setItem('simulations', JSON.stringify(simulations));
+  alert("Save successful");
 }
 
 function loadSimulation(name) {
