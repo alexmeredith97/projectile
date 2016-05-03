@@ -18,9 +18,9 @@
 		<div id="projectilesettings">
 			<form class="controls">
 				<div class="panel" style="background-color: white;">
-					<label for ='xDisplacement1'>X Displacement (m)</label><input type='number' id = 'xDisplacement1' value ='0'>
+					<label for ='xDisplacement1'>X Displacement (m)</label><input type='number' id = 'xDisplacement1' value = 'updateXseries()'>
 					<br/>
-					<label for ='yDisplacement1'>Y Displacement (m)</label><input type='number' id = 'yDisplacement1' value ='0'>
+					<label for ='yDisplacement1'>Y Displacement (m)</label><input type='number' id = 'yDisplacement1' value = 'updateYseries()'>
 					<br/>
 					<p1>----------------------------------------</p1>
 					<br/>
@@ -45,12 +45,13 @@
 					<br/>
 					<br/>
 					<label for ="gravity"  > Gravitational Acceleration </label>
-					<select id="gravityMenu1" name="gravityMenu" value="0" oninput='updateValues("gravityValue1",this.value)' onchange='updateValues("gravityValue1",this.value)'>
+					<select id="gravityMenu1" name="gravityMenu" value="0" oninput='updateValues("gravityValue1",this.value)' onchange='updateValues("gravityValue1",this.value)' onclick = loadGravity()>
+						<option for localstorage.gravity.length>
+							 <value = localstorage.gravity>localstorage.gravityname</option>
 						<option value="9.8">Earth - 9.8</option>
 						<option value="1.62">Moon - 1.62</option>
 						<option value="3.71">Mars - 3.71</option>
-						<option value="24.79">Jupiter - 24.79</option>
-						<option value="11.5">Example Planet</option>
+						
 					</select>
 					<br/>
 					<input type ="number"  id="gravityValue1" min = "0.1" maxlength="6" value ="9.8" oninput='syncVariables();' onchange='syncVariables();'>
@@ -81,7 +82,7 @@
 				</div>
 
 				<div class="panel" style="background-color: white;">
-					<label for ='time'>Time (Seconds)</label><input type='number' id = 'time' value ='00:00'>
+					<label for ='time'>Time (Seconds)</label><input type='number' id = 'time' value = 'Graph.updateseries(t)'>
 					<br/><br/>
 					<label for="compare">Compare trajectories</label>
 					<br/>
@@ -90,13 +91,12 @@
 					<br/>
 					<input type="button" value="Launch" onclick="display.startAnimating()">
 					<br/><br/>
-					<input type="button" value="Pause / Resume">
+					<input type="button" value="Pause / Resume" onclick = 'Graph.updateseries(t) = t'>
 					<br/><br/><br/><br/><br/>
 					<label for ='savedSimulations'>Select a Previously Saved Simulation </label>
-					<select id="savedSimulations" name="savedSimulations" value="0">
-						<option value="9.8">Year 9 25/4/16 lesson</option>
-						<option value="9.8">Test Simulation 1</option>
-						<option value="9.8">Mr Barsby Test</option>
+					<select id="savedSimulations" name="savedSimulations" value="0" onclick = 'loadSimulations()'>
+						<option for localstorage.simulation.length>
+							 <value = localstorage.simuloation>localstorage.simulationname</option>
 						
 					</select>
 					<br/><br/><br/><br/><br/>
@@ -106,9 +106,9 @@
 				</div>
 
 				<div id="div1" class="panel" style="border-right-color: rgb(170, 170, 170); border-right-width: 1px; border-right-style: solid; background-color: white; display: none;">
-					<label for ='xDisplacement2'>X Displacement (m)</label><input type='number' id = 'xDisplacement2' value ='0'>
+					<label for ='xDisplacement2'>X Displacement (m)</label><input type='number' id = 'xDisplacement2' value = 'updateXseries()'>
 					<br/>
-					<label for ='yDisplacement2'>Y Displacement (m)</label><input type='number' id = 'yDisplacement2' value ='0'>
+					<label for ='yDisplacement2'>Y Displacement (m)</label><input type='number' id = 'yDisplacement2' value = 'updateYseries()'>
 					<br/>
 					<p1>----------------------------------------</p1>
 					<br/>
@@ -133,7 +133,9 @@
 					<br/>
 					<br/>
 					<label for ="gravity"  > Gravitational Acceleration </label>
-					<select id="gravityMenu2" name="gravityMenu" value="0" oninput='updateValues("gravityValue2",this.value)' onchange='updateValues("gravityValue2",this.value)'>
+					<select id="gravityMenu2" name="gravityMenu" value="0" oninput='updateValues("gravityValue2",this.value)' onchange='updateValues("gravityValue2",this.value)' onclick = loadGravity()>
+						<option for localstorage.gravity.length>
+							 <value = localstorage.gravity>localstorage.gravityname</option>
 						<option value="9.8">Earth - 9.8</option>
 						<option value="1.62">Moon - 1.62</option>
 						<option value="3.71">Mars - 3.71</option>
