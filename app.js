@@ -28,14 +28,51 @@ bounces2: 0,
 efficiency2: 0.5
 }
 
+//allows user to save custom gravity to localstorage
+function saveGravity(){
+  database.connect(localstorage)
+  gravityName = document.getElementById('saveName').value;
+  INSERT INTO gravity
+  saveToSimulations(gravityName)
+}
+
+//saves current gravity value and name to gravity in localstorage
+function saveToGravity(gravityName) {
+  database.connect(localstorage)
+  setup.time = new Date().getTime();
+  gravity = loadGravity()
+  if(gravity === null || gravity === undefined){
+    gravity = {}
+  }
+  gravity[gravityName] = setup
+  localStorage.setItem('gravity', JSON.stringify(gravity));
+  alert("Save successful");
+}
+
+//loads gravity from localstorage
+function loadGravity(gravityName) {
+  database.connect(localstorage)
+  simulations = JSON.parse(localStorage.getItem('gravity'));
+  response = database.query("SELECT [name] FROM gravity")
+  setup = simulations[response];
+  display.reDraw();
+}
+
+function loadGravity() {
+  database.connect(localstorage)
+  return JSON.parse(localStorage.getItem('gravity'));
+
 // allows user to save a simulation under a chosen name 
 function save(){
+  database.connect(localstorage)
   name = document.getElementById('saveName').value;
+  INSERT INTO simulations
   saveToSimulations(name)
 }
 
-// saves all current variable values to localstorage
+// saves all current variable values to simulations in localstorage
 function saveToSimulations(name) {
+  database.connect(localstorage)
   setup.time = new Date().getTime();
   simulations = loadSimulations()
   if(simulations === null || simulations === undefined){
@@ -46,13 +83,17 @@ function saveToSimulations(name) {
   alert("Save successful");
 }
 
-function loadSimulation(name) {
+//loads simulation from localstorage 
+function loadSimulations(name) {
+  database.connect(localstorage)
   simulations = JSON.parse(localStorage.getItem('simulations'));
-  setup = simulations[name];
+  response = database.query("SELECT [name] FROM simulations")
+  setup = simulations[response];
   display.reDraw();
 }
 
 function loadSimulations() {
+  database.connect(localstorage)
   return JSON.parse(localStorage.getItem('simulations'));
 }
 
@@ -114,14 +155,14 @@ function Graph() {
 	this.animindex = 0;
 	this.prevFrameStartTime = 0;
 }
-
+//rescales axis to make sure graph is always on screen
 Graph.prototype.reScale = function() {
 	var xMax = Math.max(this.xSeries1[this.xSeries1.length - 1], this.xSeries2[this.xSeries2.length - 1])
 	var yMax = Math.max((-setup.velocity1 * Math.sin(setup.angle1) * setup.velocity1 * Math.sin(setup.angle1)) / (2 * setup.gravity1) + parseInt(setup.height1), (-setup.velocity2 * Math.sin(setup.angle2) * setup.velocity2 * Math.sin(setup.angle2)) / (2 * setup.gravity2) + parseInt(setup.height2));
 	this.pixelsPerMeter = Math.min(this.canvas.width / xMax, this.canvas.height / yMax)
 	this.tick = 1;
 }
-
+//redraw function which clears canvas, gets returned values from updateSeries and fits the updated graph to scale on the canvas
 Graph.prototype.reDraw = function() {
 	this.clearDisplay();
 	this.updateSeries();
@@ -130,7 +171,7 @@ Graph.prototype.reDraw = function() {
 	this.drawSeries(this.xSeries2, this.ySeries2, this.colour2);
 	this.drawAxis();
 }
-
+//draws axis to scale 
 Graph.prototype.drawAxis = function() {
 	this.ctx.lineWidth = 1;
 	this.ctx.strokeStyle = 'black';
@@ -173,7 +214,7 @@ Graph.prototype.drawAxis = function() {
 		this.ctx.fillText(Math.round((this.canvas.height-y)/this.pixelsPerMeter), 3, y - 4);
 	}
 };
-
+//clears the canvas
 Graph.prototype.clearDisplay = function() {
 	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 }
@@ -232,6 +273,7 @@ Graph.prototype.drawSeries = function(seriesX, seriesY, colour) {
 	this.ctx.stroke();
 }
 
+//animates the projectile based on x and y series coordinates
 Graph.prototype.drawAnimatingSeries = function(seriesX, seriesY, sliceN, colour) {
 	this.ctx.lineWidth = 1;
 	this.ctx.strokeStyle = colour;
@@ -264,6 +306,7 @@ Graph.prototype.drawAnimatingSeries = function(seriesX, seriesY, sliceN, colour)
 	this.ctx.fillStyle = 'black'
 }
 
+
 Graph.prototype.startAnimating = function() {
 	this.firstAnimCall = true;
 	window.requestAnimationFrame(this.animateProjectile.bind(this))
@@ -294,7 +337,7 @@ Graph.prototype.animateProjectile = function(time) {
 	}
 	
 };
-
+//toggles showing / hiding the second projectile   
 function show(it, box) {
 	var vis = (box.checked) ? "block" : "none";
 	var col = (box.checked) ? "purple" : "rgba(0,0,0,0)";
